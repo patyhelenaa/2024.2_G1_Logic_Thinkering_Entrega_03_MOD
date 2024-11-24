@@ -28,16 +28,13 @@ class ReinforcedCopperShield : ShieldItem(
     fun handleBlockedDamage(blocker: PlayerEntity, amount: Float) {
         if (amount < MIN_DAMAGE_THRESHOLD) return
 
-        // Get the shield stack
         val shieldStack = blocker.activeItem
 
-        // Reduce durability
         if (!blocker.abilities.creativeMode) {
             val currentDurability = shieldStack.maxDamage - shieldStack.damage
             if (currentDurability > 0) {
                 shieldStack.damage += DURABILITY_DAMAGE_PER_HIT
 
-                // Break the shield if durability reaches 0
                 if (shieldStack.damage >= shieldStack.maxDamage) {
                     shieldStack.count = 0
                     blocker.world.playSound(
