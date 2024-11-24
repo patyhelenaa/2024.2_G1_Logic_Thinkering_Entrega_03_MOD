@@ -10,6 +10,7 @@ import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvents
 import net.minecraft.text.Text
 import net.minecraft.util.Formatting
+import kotlin.math.max
 
 class ReinforcedCopperSword(
     private val material: ReinforcedCopperMaterial = ReinforcedCopperMaterial,
@@ -20,6 +21,7 @@ class ReinforcedCopperSword(
         private const val DEFAULT_CHARGE = 0
         private const val SOUND_VOLUME = 1.0f
         private const val SOUND_PITCH = 1.0f
+        private const val MAX_CHARGE = 2
     }
 
     override fun postHit(stack: ItemStack, target: LivingEntity, attacker: LivingEntity): Boolean {
@@ -45,7 +47,7 @@ class ReinforcedCopperSword(
         stack.get(CHARGE_COMPONENT) ?: DEFAULT_CHARGE
 
     private fun dealChargedDamage(target: LivingEntity, attacker: PlayerEntity, chargeLevel: Int) {
-        val damageDealt = material.attackDamage * chargeLevel
+        val damageDealt = material.attackDamage * (max(chargeLevel, MAX_CHARGE) + 1)
         target.damage(target.damageSources.playerAttack(attacker), damageDealt)
     }
 
