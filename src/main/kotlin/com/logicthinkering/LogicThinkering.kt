@@ -9,7 +9,7 @@ object LogicThinkering : ModInitializer {
 
     override fun onInitialize() {
         logger.info("Initializing Logic Thinkering mod!")
-        registerItems()
+        ModItems.registerItems()
         ModComponents.initialize()
     }
 }
