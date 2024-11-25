@@ -23,7 +23,7 @@ object ModItems {
         }
     }
 
-    fun registerItem(item: Item, id: String): Item {
+    private fun registerItem(item: Item, id: String): Item {
         return Registry.register(Registries.ITEM, Identifier.of(MOD_ID, id), item)
     }
 }
