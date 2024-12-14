@@ -19,10 +19,17 @@ public class Blocos {
             AbstractBlock.Settings.create().strength(4f).requiresTool()
     );
 
+    public static final Block MATRIZ_FIOS = RegistrarBlocos.registrarBloco(
+            "matriz_fios",
+            Block::new,
+            AbstractBlock.Settings.create().strength(4f).requiresTool()
+    );
+
     public static void Inicializa() {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
             entries.add(Blocos.CLOCK);
             entries.add(Blocos.BLOCO_MINERACAO);
+            entries.add(Blocos.MATRIZ_FIOS);
         });
     }
 }
