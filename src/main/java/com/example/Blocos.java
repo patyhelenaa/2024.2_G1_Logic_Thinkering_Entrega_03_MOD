@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.block.Clock;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -9,7 +10,7 @@ public class Blocos {
 
     public static final Block CLOCK = RegistrarBlocos.registrarBloco(
             "clock",
-            Block::new,
+            Clock::new,
             AbstractBlock.Settings.create().strength(4f).requiresTool()
     );
 
