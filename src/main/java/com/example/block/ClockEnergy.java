@@ -3,8 +3,14 @@ package com.example.block;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.random.Random;
 import net.minecraft.world.BlockView;
+import net.minecraft.world.World;
 
 public class ClockEnergy extends Block {
     public static final BooleanProperty ACTIVE = BooleanProperty.of("active");
@@ -36,15 +42,15 @@ public class ClockEnergy extends Block {
         boolean isActive = state.get(ACTIVE);
         world.setBlockState(pos, state.with(ACTIVE, !isActive), Block.NOTIFY_ALL);
 
-        // Solicita uma nova atualização após 20 ticks (1 segundo)
-        world.scheduleBlockTick(pos, this, 20);
+        // Solicita uma nova atualização (20 ticks = 1 segundo)
+        world.scheduleBlockTick(pos, this, 100);
     }
 
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, net.minecraft.entity.LivingEntity placer, net.minecraft.item.ItemStack itemStack) {
         // Quando o bloco é colocado, inicia o ciclo de atualizações
         if (!world.isClient) {
-            world.scheduleBlockTick(pos, this, 20); // Primeira atualização após 20 ticks (1 segundo)
+            world.scheduleBlockTick(pos, this, 100); // Primeira atualização 20 ticks = 1 segundo
         }
     }
 }
