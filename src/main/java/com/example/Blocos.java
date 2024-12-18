@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.block.AutoMiningBlock;
 import com.example.block.ClockEnergy;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
@@ -16,7 +17,7 @@ public class Blocos {
 
     public static final Block BLOCO_MINERACAO = RegistrarBlocos.registrarBloco(
             "bloco_mineracao",
-            Block::new,
+            AutoMiningBlock::new,
             AbstractBlock.Settings.create().strength(4f).requiresTool()
     );
 

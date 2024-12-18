@@ -3,6 +3,8 @@ package com.example.block;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
@@ -47,7 +49,7 @@ public class ClockEnergy extends Block {
     }
 
     @Override
-    public void onPlaced(World world, BlockPos pos, BlockState state, net.minecraft.entity.LivingEntity placer, net.minecraft.item.ItemStack itemStack) {
+    public void onPlaced(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
         // Quando o bloco é colocado, inicia o ciclo de atualizações
         if (!world.isClient) {
             world.scheduleBlockTick(pos, this, 100); // Primeira atualização 20 ticks = 1 segundo
