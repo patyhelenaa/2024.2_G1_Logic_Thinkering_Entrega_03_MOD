@@ -11,13 +11,17 @@ public class Itens {
     public static Item AMETISTA_REFORCADO = RegistrarItem.registrarItemComum("ametista_reforcado");
 
     public static Item BOTA_COBRE_REFORCADA = RegistrarItem.registrarUtilizavel("botas_cobre_reforcada", (settings) -> {
-        return new ArmorItem(MateriaisArmadura.COBRE_REFORCADO, EquipmentType.BOOTS, settings);
+        return new ArmorItem(MateriaisArmadura.REINFORCED_COPPER, EquipmentType.BOOTS, settings);
     });
     public static Item BOTA_ESMERALDA_REFORCADA = RegistrarItem.registrarUtilizavel("botas_esmeralda_reforcada", (settings) -> {
-        return new ArmorItem(MateriaisArmadura.ESMERALDA_REFORCADA, EquipmentType.BOOTS, settings);
+        return new ArmorItem(MateriaisArmadura.REINFORCED_EMERALD, EquipmentType.BOOTS, settings);
     });
     public static Item BOTA_AMETISTA_REFORCADA = RegistrarItem.registrarUtilizavel("botas_ametista_reforcada", (settings) -> {
-        return new ArmorItem(MateriaisArmadura.AMETISTA_REFORCADA, EquipmentType.BOOTS, settings);
+        return new ArmorItem(MateriaisArmadura.REINFORCED_AMETHYST, EquipmentType.BOOTS, settings);
+    });
+
+    public static Item aa = RegistrarItem.registrarUtilizavel("botas_ametista_reaaaaforcada", (settings) -> {
+        return new ArmorItem(MateriaisArmadura.REINFORCED_AMETHYST, EquipmentType.LEGGINGS, settings);
     });
 
     public static void Inicializa() {
