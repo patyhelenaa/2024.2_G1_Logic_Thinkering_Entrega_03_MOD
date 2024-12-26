@@ -22,7 +22,6 @@ public class Item {
     private ConcreteArmor reinforcedAmethystLeggings = (ConcreteArmor) concreteArmorAmethyst.clone();
     private ConcreteArmor reinforcedAmethystBoots = (ConcreteArmor) concreteArmorAmethyst.clone();
 
-
     public Item() {
         teste.setId("teste");
 
