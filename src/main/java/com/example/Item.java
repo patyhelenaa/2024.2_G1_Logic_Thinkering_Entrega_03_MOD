@@ -51,7 +51,7 @@ public class Item {
         reinforcedAmethystBoots.setType("BOOTS");
         reinforcedAmethystBoots.setId("reinforced_amethyst_boots");
 
-        reinforcedCopperSword.setId("reinforced_amethyst_sword");
+        reinforcedCopperSword.setId("reinforced_copper_sword");
     }
 
 }
