@@ -23,6 +23,7 @@ public class Item {
     private ConcreteArmor reinforcedAmethystBoots = (ConcreteArmor) concreteArmorAmethyst.clone();
 
     private ConcreteTool reinforcedCopperSword = new ConcreteTool("", "SWORD", "REINFORCED_COPPER");
+    private ConcreteTool reinforcedEmeraldSword = new ConcreteTool("", "SWORD", "REINFORCED_EMERALD");
 
     public Item() {
         teste.setId("teste");
@@ -52,6 +53,7 @@ public class Item {
         reinforcedAmethystBoots.setId("reinforced_amethyst_boots");
 
         reinforcedCopperSword.setId("reinforced_copper_sword");
+        reinforcedEmeraldSword.setId("reinforced_emerald_sword");
     }
 
 }
