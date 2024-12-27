@@ -7,5 +7,8 @@
   "item.logicthinkering.matriz_fios": "Matriz de Fios",
   "item.logicthinkering.reinforced_copper_sword": "Espada de Cobre",
   "item.logicthinkering.reinforced_emerald_sword": "Espada de Esmeralda",
-  "item.logicthinkering.reinforced_amethyst_sword": "Espada de Ametista"
+  "item.logicthinkering.reinforced_amethyst_sword": "Espada de Ametista",
+  "item.logicthinkering.reinforced_copper_axe": "Machado de Cobre",
+  "item.logicthinkering.reinforced_emerald_axe": "Machado de Esmeralda",
+  "item.logicthinkering.reinforced_amethyst_axe": "Machado de Ametista"
 }

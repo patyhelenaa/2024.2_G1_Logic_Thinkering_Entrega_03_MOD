@@ -26,6 +26,10 @@ public class Item {
     private ConcreteTool reinforcedEmeraldSword = new ConcreteTool("", "SWORD", "REINFORCED_EMERALD");
     private ConcreteTool reinforcedAmethystSword = new ConcreteTool("", "SWORD", "REINFORCED_AMETHYST");
 
+    private ConcreteTool reinforcedCopperAxe = new ConcreteTool("", "AXE", "REINFORCED_COPPER");
+    private ConcreteTool reinforcedEmeraldAxe = new ConcreteTool("", "AXE", "REINFORCED_EMERALD");
+    private ConcreteTool reinforcedAmethystAxe = new ConcreteTool("", "AXE", "REINFORCED_AMETHYST");
+
     public Item() {
         teste.setId("teste");
 
@@ -56,6 +60,10 @@ public class Item {
         reinforcedCopperSword.setId("reinforced_copper_sword");
         reinforcedEmeraldSword.setId("reinforced_emerald_sword");
         reinforcedAmethystSword.setId("reinforced_amethyst_sword");
+
+        reinforcedCopperAxe.setId("reinforced_copper_axe");
+        reinforcedEmeraldAxe.setId("reinforced_emerald_axe");
+        reinforcedAmethystAxe.setId("reinforced_amethyst_axe");
     }
 
 }

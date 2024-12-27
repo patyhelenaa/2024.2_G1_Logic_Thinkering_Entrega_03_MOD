@@ -2,6 +2,10 @@ package com.example;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.SwordItem;
+import net.minecraft.item.AxeItem;
+import net.minecraft.item.PickaxeItem;
+import net.minecraft.item.ShovelItem;
+import net.minecraft.item.HoeItem;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -50,7 +54,15 @@ public class ConcreteTool extends PrototypeItem {
             ToolMaterial material = MateriaisFerramenta.valueOf(this.material.name());
             switch (this.type) {
                 case SWORD:
-                    return new SwordItem(material, 3, -2.4F, settings);
+                    return new SwordItem(material, 3, -1.9F, settings);
+                case AXE:
+                    return new AxeItem(material, 6, -2.7F, settings);
+                case PICKAXE:
+                    return new PickaxeItem(material, 1, -2.8F, settings);
+                case SHOVEL:
+                    return new ShovelItem(material, 1.5F, -3.0F, settings);
+                case HOE:
+                    return new HoeItem(material, -3, 0.0F, settings);
                 default:
                     throw new IllegalArgumentException("UNKNOWN TOOL TYPE: " + this.type);
             }
