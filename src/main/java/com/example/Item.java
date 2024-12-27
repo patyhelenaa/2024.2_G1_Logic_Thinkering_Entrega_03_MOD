@@ -22,6 +22,8 @@ public class Item {
     private ConcreteArmor reinforcedAmethystLeggings = (ConcreteArmor) concreteArmorAmethyst.clone();
     private ConcreteArmor reinforcedAmethystBoots = (ConcreteArmor) concreteArmorAmethyst.clone();
 
+    private ConcreteTool reinforcedCopperSword = new ConcreteTool("", "SWORD", "REINFORCED_COPPER");
+
     public Item() {
         teste.setId("teste");
 
@@ -49,7 +51,7 @@ public class Item {
         reinforcedAmethystBoots.setType("BOOTS");
         reinforcedAmethystBoots.setId("reinforced_amethyst_boots");
 
-
+        reinforcedCopperSword.setId("reinforced_amethyst_sword");
     }
 
 }
