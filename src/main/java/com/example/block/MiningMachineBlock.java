@@ -1,12 +1,13 @@
 package com.example.block;
 
-import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
+import com.example.block.entity.MiningMachineBlockEntity;
+import com.mojang.serialization.MapCodec;
+import net.minecraft.block.*;
+import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.ItemScatterer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.util.math.random.Random;
@@ -15,18 +16,45 @@ import net.minecraft.world.World;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AutoMiningBlock extends Block {
+public class MiningMachineBlock extends BlockWithEntity {
 
     private final List<BlockPos> blocksToMine = new ArrayList<>();
 
-    public AutoMiningBlock(AbstractBlock.Settings settings) {
+    public MiningMachineBlock(Settings settings) {
         super(settings);
+    }
+
+    @Override
+    protected MapCodec<? extends MiningMachineBlock> getCodec() {
+        return createCodec(MiningMachineBlock::new);
+    }
+
+    @Override
+    public BlockEntity createBlockEntity(BlockPos pos, BlockState state) {
+        return new MiningMachineBlockEntity(pos, state);
+    }
+
+    @Override
+    protected BlockRenderType getRenderType(BlockState state) {
+        return BlockRenderType.MODEL;
     }
 
     @Override
     public void onPlaced(World world, BlockPos pos, BlockState state, LivingEntity placer, ItemStack itemStack) {
         if (!world.isClient) {
             startMining((ServerWorld) world, pos);
+        }
+    }
+
+    @Override
+    public void onStateReplaced(BlockState state, World world, BlockPos pos, BlockState newState, boolean moved) {
+        if (state.getBlock() != newState.getBlock()) {
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (blockEntity instanceof MiningMachineBlockEntity miningMachineBlockEntity) {
+                ItemScatterer.spawn(world, pos, miningMachineBlockEntity);
+                world.updateComparators(pos,this);
+            }
+            super.onStateReplaced(state, world, pos, newState, moved);
         }
     }
 
@@ -63,7 +91,17 @@ public class AutoMiningBlock extends Block {
         if (!blocksToMine.isEmpty()) {
             // Quebrar o próximo bloco na lista
             BlockPos targetPos = blocksToMine.removeFirst(); // Remove o primeiro bloco da lista
-            world.breakBlock(targetPos, true);
+            BlockState targetState = world.getBlockState(targetPos);
+
+            BlockEntity blockEntity = world.getBlockEntity(pos);
+            if (blockEntity instanceof MiningMachineBlockEntity miningMachineEntity) {
+
+                // Pegar os itens que caem do bloco
+                ItemStack droppedItems = new ItemStack(targetState.getBlock().asItem());
+                miningMachineEntity.addItemToInventory(droppedItems);
+            }
+
+            world.setBlockState(targetPos, Blocks.AIR.getDefaultState(), 3);
         }
 
         // Agendar o próximo tick de mineração, se houver blocos restantes

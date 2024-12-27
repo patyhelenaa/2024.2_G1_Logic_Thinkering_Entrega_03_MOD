@@ -11,8 +11,9 @@ public class ExampleMod implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		Itens.Inicializa();
-		Blocos.Inicializa();
+		Itens.inicializa();
+		Blocos.inicializa();
+		BlockEntities.inicializa();
 		new Item();
 		LOGGER.info("OK");
 	}

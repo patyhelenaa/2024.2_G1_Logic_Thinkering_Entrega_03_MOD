@@ -24,7 +24,7 @@ public class Itens {
         return new ArmorItem(MateriaisArmadura.REINFORCED_AMETHYST, EquipmentType.LEGGINGS, settings);
     });
 
-    public static void Inicializa() {
+    public static void inicializa() {
         GuiaInventario.adicionarItem(COBRE_REFORCADO);
         GuiaInventario.adicionarItem(ESMERALDA_REFORCADO);
         GuiaInventario.adicionarItem(AMETISTA_REFORCADO);
