@@ -19,7 +19,5 @@ public class BlockEntities {
             FabricBlockEntityTypeBuilder.create(MiningMachineBlockEntity::new, Blocos.BLOCO_MINERACAO).build()
     );
 
-    public static void inicializa() {
-
-    }
+    public static void inicializa() {}
 }

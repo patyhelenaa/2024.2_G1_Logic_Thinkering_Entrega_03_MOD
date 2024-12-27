@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.screenhandler.ModScreenHandlers;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,6 +15,7 @@ public class ExampleMod implements ModInitializer {
 		Itens.inicializa();
 		Blocos.inicializa();
 		BlockEntities.inicializa();
+		ModScreenHandlers.inicializa();
 		new Item();
 		LOGGER.info("OK");
 	}
