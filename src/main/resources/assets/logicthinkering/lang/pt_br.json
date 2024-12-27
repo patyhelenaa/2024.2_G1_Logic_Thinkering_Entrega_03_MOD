@@ -1,8 +1,11 @@
 {
   "item.logicthinkering.cobre_reforcado": "Cobre Reforçado",
+  "item.logicthinkering.reinforced_emerald_shard": "Esmeralda Reforçada",
+  "item.logicthinkering.reinforced_amethyst_shard": "Ametista Reforçada",
   "item.logicthinkering.clock": "Clock",
   "item.logicthinkering.bloco_mineracao": "Bloco de Mineracao",
   "item.logicthinkering.matriz_fios": "Matriz de Fios",
   "item.logicthinkering.reinforced_copper_sword": "Espada de Cobre",
-  "item.logicthinkering.reinforced_emerald_sword": "Espada de Esmeralda"
+  "item.logicthinkering.reinforced_emerald_sword": "Espada de Esmeralda",
+  "item.logicthinkering.reinforced_amethyst_sword": "Espada de Ametista"
 }

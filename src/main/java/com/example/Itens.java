@@ -7,8 +7,8 @@ import net.minecraft.item.equipment.EquipmentType;
 public class Itens {
 
     public static Item COBRE_REFORCADO = RegistrarItem.registrarItemComum("cobre_reforcado");
-    public static Item ESMERALDA_REFORCADO = RegistrarItem.registrarItemComum("esmeralda_reforcado");
-    public static Item AMETISTA_REFORCADO = RegistrarItem.registrarItemComum("ametista_reforcado");
+    public static Item ESMERALDA_REFORCADO = RegistrarItem.registrarItemComum("reinforced_emerald_shard");
+    public static Item AMETISTA_REFORCADO = RegistrarItem.registrarItemComum("reinforced_amethyst_shard");
 
     public static Item BOTA_COBRE_REFORCADA = RegistrarItem.registrarUtilizavel("botas_cobre_reforcada", (settings) -> {
         return new ArmorItem(MateriaisArmadura.REINFORCED_COPPER, EquipmentType.BOOTS, settings);
