@@ -6,7 +6,7 @@ import net.minecraft.item.equipment.EquipmentType;
 
 public class Itens {
 
-    public static Item COBRE_REFORCADO = RegistrarItem.registrarItemComum("cobre_reforcado");
+    public static Item COBRE_REFORCADO = RegistrarItem.registrarItemComum("reinforced_copper_ingot");
     public static Item ESMERALDA_REFORCADO = RegistrarItem.registrarItemComum("reinforced_emerald_shard");
     public static Item AMETISTA_REFORCADO = RegistrarItem.registrarItemComum("reinforced_amethyst_shard");
 
