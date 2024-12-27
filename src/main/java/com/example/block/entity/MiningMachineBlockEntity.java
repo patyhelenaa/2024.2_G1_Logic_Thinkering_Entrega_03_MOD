@@ -28,6 +28,22 @@ public class MiningMachineBlockEntity extends BlockEntity implements NamedScreen
         return inventory;
     }
 
+    public boolean canStoreItem(ItemStack item) {
+        for (ItemStack slotStack : inventory) {
+            // Se houver slot vazio, o item pode ser armazenado
+            if (slotStack.isEmpty()) {
+                return true;
+            }
+
+            // Se o item for do mesmo tipo e houver espaço para empilhar
+            if (ItemStack.areItemsEqual(slotStack, item) && slotStack.getCount() < slotStack.getMaxCount() && slotStack.getCount() + item.getCount() <= slotStack.getMaxCount()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public void addItemToInventory(ItemStack itemStack) {
         // Primeiro, tenta agrupar o item nos slots existentes
         for (int i = 0; i < inventory.size(); i++) {

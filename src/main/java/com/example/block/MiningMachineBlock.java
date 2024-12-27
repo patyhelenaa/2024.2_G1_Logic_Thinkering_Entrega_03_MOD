@@ -105,18 +105,43 @@ public class MiningMachineBlock extends BlockWithEntity {
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (!blocksToMine.isEmpty()) {
             // Quebrar o próximo bloco na lista
-            BlockPos targetPos = blocksToMine.removeFirst(); // Remove o primeiro bloco da lista
+            BlockPos targetPos = blocksToMine.getFirst();
             BlockState targetState = world.getBlockState(targetPos);
 
             BlockEntity blockEntity = world.getBlockEntity(pos);
             if (blockEntity instanceof MiningMachineBlockEntity miningMachineEntity) {
+                List<ItemStack> drops = Block.getDroppedStacks(
+                        targetState,
+                        world,
+                        targetPos,
+                        world.getBlockEntity(targetPos),
+                        null,
+                        ItemStack.EMPTY
+                );
 
-                // Pegar os itens que caem do bloco
-                ItemStack droppedItems = new ItemStack(targetState.getBlock().asItem());
-                miningMachineEntity.addItemToInventory(droppedItems);
+                boolean canStoreAllDrops = true;
+                for (ItemStack drop : drops) {
+                    if (!miningMachineEntity.canStoreItem(drop)) {
+                        canStoreAllDrops = false;
+                        break;
+                    }
+                }
+
+                // Move o bloco para final da lista, uma vez que não é possível armazenar
+                // todos os seus drops, e segue com a mineração dos demais blocos.
+                if (!canStoreAllDrops) {
+                    blocksToMine.addLast(blocksToMine.removeFirst());
+                    world.scheduleBlockTick(pos, this, 20);
+                    return;
+                }
+
+                for (ItemStack item : drops) {
+                    miningMachineEntity.addItemToInventory(item);
+                }
+
+                blocksToMine.removeFirst();
+                world.setBlockState(targetPos, Blocks.AIR.getDefaultState(), 3);
             }
-
-            world.setBlockState(targetPos, Blocks.AIR.getDefaultState(), 3);
         }
 
         // Agendar o próximo tick de mineração, se houver blocos restantes
