@@ -32,7 +32,7 @@ public class ConcreteTool extends PrototypeItem {
     }
 
     @Override
-    public PrototypeItem clone() {
+    public ConcreteTool clone() {
         return new ConcreteTool(this.id, this.type.name(), this.material.name());
     }
 

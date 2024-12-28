@@ -22,25 +22,25 @@ public class Item {
     private ConcreteArmor reinforcedAmethystBoots = reinforcedAmethystHelmet.clone();
 
 
-    private ConcreteTool reinforcedCopperSword = new ConcreteTool("", "SWORD", "REINFORCED_COPPER");
-    private ConcreteTool reinforcedCopperAxe = new ConcreteTool("", "AXE", "REINFORCED_COPPER");
-    private ConcreteTool reinforcedCopperPickaxe = new ConcreteTool("", "PICKAXE", "REINFORCED_COPPER");
-    private ConcreteTool reinforcedCopperShovel = new ConcreteTool("", "SHOVEL", "REINFORCED_COPPER");
-    private ConcreteTool reinforcedCopperHoe = new ConcreteTool("", "HOE", "REINFORCED_COPPER");
+    private ConcreteTool reinforcedCopperSword = new ConcreteTool("reinforced_copper_sword", "SWORD", "REINFORCED_COPPER");
+    private ConcreteTool reinforcedCopperAxe = reinforcedCopperSword.clone();
+    private ConcreteTool reinforcedCopperPickaxe = reinforcedCopperSword.clone();
+    private ConcreteTool reinforcedCopperShovel = reinforcedCopperSword.clone();
+    private ConcreteTool reinforcedCopperHoe = reinforcedCopperSword.clone();
 
 
-    private ConcreteTool reinforcedEmeraldSword = new ConcreteTool("", "SWORD", "REINFORCED_EMERALD");
-    private ConcreteTool reinforcedEmeraldAxe = new ConcreteTool("", "AXE", "REINFORCED_EMERALD");
-    private ConcreteTool reinforcedEmeraldPickaxe = new ConcreteTool("", "PICKAXE", "REINFORCED_EMERALD");
-    private ConcreteTool reinforcedEmeraldShovel = new ConcreteTool("", "SHOVEL", "REINFORCED_EMERALD");
-    private ConcreteTool reinforcedEmeraldHoe = new ConcreteTool("", "HOE", "REINFORCED_EMERALD");
+    private ConcreteTool reinforcedEmeraldSword = new ConcreteTool("reinforced_emerald_sword", "SWORD", "REINFORCED_EMERALD");
+    private ConcreteTool reinforcedEmeraldAxe = reinforcedEmeraldSword.clone();
+    private ConcreteTool reinforcedEmeraldPickaxe = reinforcedEmeraldSword.clone();
+    private ConcreteTool reinforcedEmeraldShovel = reinforcedEmeraldSword.clone();
+    private ConcreteTool reinforcedEmeraldHoe = reinforcedEmeraldSword.clone();
 
 
-    private ConcreteTool reinforcedAmethystSword = new ConcreteTool("", "SWORD", "REINFORCED_AMETHYST");
-    private ConcreteTool reinforcedAmethystAxe = new ConcreteTool("", "AXE", "REINFORCED_AMETHYST");
-    private ConcreteTool reinforcedAmethystPickaxe = new ConcreteTool("", "PICKAXE", "REINFORCED_AMETHYST");
-    private ConcreteTool reinforcedAmethystShovel = new ConcreteTool("", "SHOVEL", "REINFORCED_AMETHYST");
-    private ConcreteTool reinforcedAmethystHoe = new ConcreteTool("", "HOE", "REINFORCED_AMETHYST");
+    private ConcreteTool reinforcedAmethystSword = new ConcreteTool("reinforced_amethyst_sword", "SWORD", "REINFORCED_AMETHYST");
+    private ConcreteTool reinforcedAmethystAxe = reinforcedAmethystSword.clone();
+    private ConcreteTool reinforcedAmethystPickaxe = reinforcedAmethystSword.clone();
+    private ConcreteTool reinforcedAmethystShovel = reinforcedAmethystSword.clone();
+    private ConcreteTool reinforcedAmethystHoe = reinforcedAmethystSword.clone();
 
 
     public Item() {
@@ -71,20 +71,32 @@ public class Item {
         reinforcedAmethystSword.setId("reinforced_amethyst_sword");
 
         reinforcedCopperAxe.setId("reinforced_copper_axe");
+        reinforcedCopperAxe.setType("AXE");
         reinforcedEmeraldAxe.setId("reinforced_emerald_axe");
+        reinforcedEmeraldAxe.setType("AXE");
         reinforcedAmethystAxe.setId("reinforced_amethyst_axe");
+        reinforcedAmethystAxe.setType("AXE");
 
         reinforcedCopperPickaxe.setId("reinforced_copper_pickaxe");
+        reinforcedCopperPickaxe.setType("PICKAXE");
         reinforcedEmeraldPickaxe.setId("reinforced_emerald_pickaxe");
+        reinforcedEmeraldPickaxe.setType("PICKAXE");
         reinforcedAmethystPickaxe.setId("reinforced_amethyst_pickaxe");
+        reinforcedAmethystPickaxe.setType("PICKAXE");
 
         reinforcedCopperShovel.setId("reinforced_copper_shovel");
+        reinforcedCopperShovel.setType("SHOVEL");
         reinforcedEmeraldShovel.setId("reinforced_emerald_shovel");
+        reinforcedEmeraldShovel.setType("SHOVEL");
         reinforcedAmethystShovel.setId("reinforced_amethyst_shovel");
+        reinforcedAmethystShovel.setType("SHOVEL");
 
         reinforcedCopperHoe.setId("reinforced_copper_hoe");
+        reinforcedCopperHoe.setType("HOE");
         reinforcedEmeraldHoe.setId("reinforced_emerald_hoe");
+        reinforcedEmeraldHoe.setType("HOE");
         reinforcedAmethystHoe.setId("reinforced_amethyst_hoe");
+        reinforcedAmethystHoe.setType("HOE");
 
         reinforcedCopperShard.setId("reinforced_copper_ingot");
         reinforcedEmeraldShard.setId("reinforced_emerald_shard");
