@@ -26,16 +26,22 @@ public class Item {
     private ConcreteTool reinforcedCopperSword = new ConcreteTool("", "SWORD", "REINFORCED_COPPER");
     private ConcreteTool reinforcedCopperAxe = new ConcreteTool("", "AXE", "REINFORCED_COPPER");
     private ConcreteTool reinforcedCopperPickaxe = new ConcreteTool("", "PICKAXE", "REINFORCED_COPPER");
+    private ConcreteTool reinforcedCopperShovel = new ConcreteTool("", "SHOVEL", "REINFORCED_COPPER");
+    private ConcreteTool reinforcedCopperHoe = new ConcreteTool("", "HOE", "REINFORCED_COPPER");
 
 
     private ConcreteTool reinforcedEmeraldSword = new ConcreteTool("", "SWORD", "REINFORCED_EMERALD");
     private ConcreteTool reinforcedEmeraldAxe = new ConcreteTool("", "AXE", "REINFORCED_EMERALD");
     private ConcreteTool reinforcedEmeraldPickaxe = new ConcreteTool("", "PICKAXE", "REINFORCED_EMERALD");
+    private ConcreteTool reinforcedEmeraldShovel = new ConcreteTool("", "SHOVEL", "REINFORCED_EMERALD");
+    private ConcreteTool reinforcedEmeraldHoe = new ConcreteTool("", "HOE", "REINFORCED_EMERALD");
 
 
     private ConcreteTool reinforcedAmethystSword = new ConcreteTool("", "SWORD", "REINFORCED_AMETHYST");
     private ConcreteTool reinforcedAmethystAxe = new ConcreteTool("", "AXE", "REINFORCED_AMETHYST");
     private ConcreteTool reinforcedAmethystPickaxe = new ConcreteTool("", "PICKAXE", "REINFORCED_AMETHYST");
+    private ConcreteTool reinforcedAmethystShovel = new ConcreteTool("", "SHOVEL", "REINFORCED_AMETHYST");
+    private ConcreteTool reinforcedAmethystHoe = new ConcreteTool("", "HOE", "REINFORCED_AMETHYST");
 
 
     public Item() {
@@ -76,6 +82,14 @@ public class Item {
         reinforcedCopperPickaxe.setId("reinforced_copper_pickaxe");
         reinforcedEmeraldPickaxe.setId("reinforced_emerald_pickaxe");
         reinforcedAmethystPickaxe.setId("reinforced_amethyst_pickaxe");
+
+        reinforcedCopperShovel.setId("reinforced_copper_shovel");
+        reinforcedEmeraldShovel.setId("reinforced_emerald_shovel");
+        reinforcedAmethystShovel.setId("reinforced_amethyst_shovel");
+
+        reinforcedCopperHoe.setId("reinforced_copper_hoe");
+        reinforcedEmeraldHoe.setId("reinforced_emerald_hoe");
+        reinforcedAmethystHoe.setId("reinforced_amethyst_hoe");
     }
 
 }

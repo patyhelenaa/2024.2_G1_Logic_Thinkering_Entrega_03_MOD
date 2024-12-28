@@ -13,5 +13,11 @@
   "item.logicthinkering.reinforced_amethyst_axe": "Machado de Ametista",
   "item.logicthinkering.reinforced_copper_pickaxe": "Picareta de Cobre",
   "item.logicthinkering.reinforced_emerald_pickaxe": "Picareta de Esmeralda",
-  "item.logicthinkering.reinforced_amethyst_pickaxe": "Picareta de Ametista"
+  "item.logicthinkering.reinforced_amethyst_pickaxe": "Picareta de Ametista",
+  "item.logicthinkering.reinforced_copper_shovel": "Pá de Cobre",
+  "item.logicthinkering.reinforced_emerald_shovel": "Pá de Esmeralda",
+  "item.logicthinkering.reinforced_amethyst_shovel": "Pá de Ametista",
+  "item.logicthinkering.reinforced_copper_hoe": "Enxada de Cobre",
+  "item.logicthinkering.reinforced_emerald_hoe": "Enxada de Esmeralda",
+  "item.logicthinkering.reinforced_amethyst_hoe": "Enxada de Ametista"
 }
