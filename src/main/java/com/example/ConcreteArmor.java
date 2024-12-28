@@ -1,7 +1,6 @@
 package com.example;
 
 import net.minecraft.item.ArmorItem;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.registry.Registries;
@@ -10,17 +9,16 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 
-import java.util.Objects;
 import java.util.function.Function;
 
 
-public class ConcreteArmor extends PrototypeItem {
+public class ConcreteArmor implements PrototypeItem {
 
     private enum ArmorType {
-        HELMET, CHESTPLATE, LEGGINGS, BOOTS;
+        HELMET, CHESTPLATE, LEGGINGS, BOOTS
     }
     private enum Material {
-        REINFORCED_COPPER, REINFORCED_EMERALD, REINFORCED_AMETHYST;
+        REINFORCED_COPPER, REINFORCED_EMERALD, REINFORCED_AMETHYST
     }
 
     public static Item ITEM;
@@ -39,24 +37,25 @@ public class ConcreteArmor extends PrototypeItem {
         return new ConcreteArmor(null, this.type.name(), this.material.name());
     }
 
-    public void updateItem(String id, Function<Item.Settings, Item> factory) {
+    @Override
+    public void updateItem(String id) {
+        Function<Item.Settings, Item> factory = (settings) -> new ArmorItem(
+                MateriaisArmadura.valueOf(this.material.name()),
+                EquipmentType.valueOf(this.type.name()),
+                settings);
+
         RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(ExampleMod.MOD_ID, id));
         Item.Settings settings = new Item.Settings();
         Item item = factory.apply(settings.registryKey(key));
-        if (item instanceof BlockItem blockItem) blockItem.appendBlocks(Item.BLOCK_ITEMS, item);
-        ConcreteItem.ITEM = Registry.register(Registries.ITEM, key, item);
-        GuiaInventario.adicionarItem(ConcreteItem.ITEM);
+        ConcreteArmor.ITEM = Registry.register(Registries.ITEM, key, item);
+
+        insertOnGroup(ConcreteArmor.ITEM);
     }
+
 
     public void setId(String id) {
         this.id = id;
-
-        updateItem(id, (settings) -> {
-            return new ArmorItem(
-                    MateriaisArmadura.valueOf(this.material.name()),
-                    EquipmentType.valueOf(this.type.name()),
-                    settings);
-        });
+        updateItem(this.id);
     }
 
     public void setType(String type){
