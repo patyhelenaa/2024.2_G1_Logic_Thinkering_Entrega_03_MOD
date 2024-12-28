@@ -10,5 +10,8 @@
   "item.logicthinkering.reinforced_amethyst_sword": "Espada de Ametista",
   "item.logicthinkering.reinforced_copper_axe": "Machado de Cobre",
   "item.logicthinkering.reinforced_emerald_axe": "Machado de Esmeralda",
-  "item.logicthinkering.reinforced_amethyst_axe": "Machado de Ametista"
+  "item.logicthinkering.reinforced_amethyst_axe": "Machado de Ametista",
+  "item.logicthinkering.reinforced_copper_pickaxe": "Picareta de Cobre",
+  "item.logicthinkering.reinforced_emerald_pickaxe": "Picareta de Esmeralda",
+  "item.logicthinkering.reinforced_amethyst_pickaxe": "Picareta de Ametista"
 }

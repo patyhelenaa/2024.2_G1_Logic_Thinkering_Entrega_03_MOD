@@ -22,13 +22,21 @@ public class Item {
     private ConcreteArmor reinforcedAmethystLeggings = (ConcreteArmor) concreteArmorAmethyst.clone();
     private ConcreteArmor reinforcedAmethystBoots = (ConcreteArmor) concreteArmorAmethyst.clone();
 
-    private ConcreteTool reinforcedCopperSword = new ConcreteTool("", "SWORD", "REINFORCED_COPPER");
-    private ConcreteTool reinforcedEmeraldSword = new ConcreteTool("", "SWORD", "REINFORCED_EMERALD");
-    private ConcreteTool reinforcedAmethystSword = new ConcreteTool("", "SWORD", "REINFORCED_AMETHYST");
 
+    private ConcreteTool reinforcedCopperSword = new ConcreteTool("", "SWORD", "REINFORCED_COPPER");
     private ConcreteTool reinforcedCopperAxe = new ConcreteTool("", "AXE", "REINFORCED_COPPER");
+    private ConcreteTool reinforcedCopperPickaxe = new ConcreteTool("", "PICKAXE", "REINFORCED_COPPER");
+
+
+    private ConcreteTool reinforcedEmeraldSword = new ConcreteTool("", "SWORD", "REINFORCED_EMERALD");
     private ConcreteTool reinforcedEmeraldAxe = new ConcreteTool("", "AXE", "REINFORCED_EMERALD");
+    private ConcreteTool reinforcedEmeraldPickaxe = new ConcreteTool("", "PICKAXE", "REINFORCED_EMERALD");
+
+
+    private ConcreteTool reinforcedAmethystSword = new ConcreteTool("", "SWORD", "REINFORCED_AMETHYST");
     private ConcreteTool reinforcedAmethystAxe = new ConcreteTool("", "AXE", "REINFORCED_AMETHYST");
+    private ConcreteTool reinforcedAmethystPickaxe = new ConcreteTool("", "PICKAXE", "REINFORCED_AMETHYST");
+
 
     public Item() {
         teste.setId("teste");
@@ -64,6 +72,10 @@ public class Item {
         reinforcedCopperAxe.setId("reinforced_copper_axe");
         reinforcedEmeraldAxe.setId("reinforced_emerald_axe");
         reinforcedAmethystAxe.setId("reinforced_amethyst_axe");
+
+        reinforcedCopperPickaxe.setId("reinforced_copper_pickaxe");
+        reinforcedEmeraldPickaxe.setId("reinforced_emerald_pickaxe");
+        reinforcedAmethystPickaxe.setId("reinforced_amethyst_pickaxe");
     }
 
 }
