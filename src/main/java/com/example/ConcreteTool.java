@@ -40,7 +40,7 @@ public class ConcreteTool extends PrototypeItem {
     public void setMaterial(String material) { this.material = Material.valueOf(material.toUpperCase()); }
 
     public void updateItem(String id, Function<Item.Settings, Item> factory) {
-        RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(ExampleMod.nomeMod, id));
+        RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(ExampleMod.MOD_ID, id));
         Item.Settings settings = new Item.Settings();
         Item item = factory.apply(settings.registryKey(key));
         ConcreteTool.ITEM = Registry.register(Registries.ITEM, key, item);

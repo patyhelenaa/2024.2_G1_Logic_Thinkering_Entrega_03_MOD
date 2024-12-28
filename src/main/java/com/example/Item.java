@@ -2,25 +2,24 @@ package com.example;
 
 public class Item {
     private ConcreteItem concreteItem = new ConcreteItem("");
-    private ConcreteItem teste = (ConcreteItem) concreteItem.clone();
+    private ConcreteItem reinforcedCopperShard = concreteItem.clone();
+    private ConcreteItem reinforcedEmeraldShard = concreteItem.clone();
+    private ConcreteItem reinforcedAmethystShard = concreteItem.clone();
 
-    private ConcreteArmor concreteArmorCopper = new ConcreteArmor("", "HELMET", "REINFORCED_COPPER");
-    private ConcreteArmor reinforcedCopperHelmet = (ConcreteArmor) concreteArmorCopper.clone();
-    private ConcreteArmor reinforcedCopperChestplate = (ConcreteArmor) concreteArmorCopper.clone();
-    private ConcreteArmor reinforcedCopperLeggings = (ConcreteArmor) concreteArmorCopper.clone();
-    private ConcreteArmor reinforcedCopperBoots = (ConcreteArmor) concreteArmorCopper.clone();
+    private ConcreteArmor reinforcedCopperHelmet = new ConcreteArmor("reinforced_copper_helmet", "HELMET", "REINFORCED_COPPER");
+    private ConcreteArmor reinforcedCopperChestplate = reinforcedCopperHelmet.clone();
+    private ConcreteArmor reinforcedCopperLeggings = reinforcedCopperHelmet.clone();
+    private ConcreteArmor reinforcedCopperBoots = reinforcedCopperHelmet.clone();
 
-    private ConcreteArmor concreteArmorEmerald = new ConcreteArmor("", "HELMET", "REINFORCED_EMERALD");
-    private ConcreteArmor reinforcedEmeraldHelmet = (ConcreteArmor) concreteArmorEmerald.clone();
-    private ConcreteArmor reinforcedEmeraldChestplate = (ConcreteArmor) concreteArmorEmerald.clone();
-    private ConcreteArmor reinforcedEmeraldLeggings = (ConcreteArmor) concreteArmorEmerald.clone();
-    private ConcreteArmor reinforcedEmeraldBoots = (ConcreteArmor) concreteArmorEmerald.clone();
+    private ConcreteArmor reinforcedEmeraldHelmet = new ConcreteArmor("reinforced_emerald_helmet", "HELMET", "REINFORCED_EMERALD");
+    private ConcreteArmor reinforcedEmeraldChestplate = reinforcedEmeraldHelmet.clone();
+    private ConcreteArmor reinforcedEmeraldLeggings = reinforcedEmeraldHelmet.clone();
+    private ConcreteArmor reinforcedEmeraldBoots = reinforcedEmeraldHelmet.clone();
 
-    private ConcreteArmor concreteArmorAmethyst = new ConcreteArmor("", "HELMET", "REINFORCED_AMETHYST");
-    private ConcreteArmor reinforcedAmethystHelmet = (ConcreteArmor) concreteArmorAmethyst.clone();
-    private ConcreteArmor reinforcedAmethystChestplate = (ConcreteArmor) concreteArmorAmethyst.clone();
-    private ConcreteArmor reinforcedAmethystLeggings = (ConcreteArmor) concreteArmorAmethyst.clone();
-    private ConcreteArmor reinforcedAmethystBoots = (ConcreteArmor) concreteArmorAmethyst.clone();
+    private ConcreteArmor reinforcedAmethystHelmet = new ConcreteArmor("reinforced_amethyst_helmet", "HELMET", "REINFORCED_AMETHYST");
+    private ConcreteArmor reinforcedAmethystChestplate = reinforcedAmethystHelmet.clone();
+    private ConcreteArmor reinforcedAmethystLeggings = reinforcedAmethystHelmet.clone();
+    private ConcreteArmor reinforcedAmethystBoots = reinforcedAmethystHelmet.clone();
 
 
     private ConcreteTool reinforcedCopperSword = new ConcreteTool("", "SWORD", "REINFORCED_COPPER");
@@ -45,29 +44,25 @@ public class Item {
 
 
     public Item() {
-        teste.setId("teste");
 
-        reinforcedCopperHelmet.setId("reinforced_copper_helmet");
         reinforcedCopperChestplate.setType("CHESTPLATE");
         reinforcedCopperChestplate.setId("reinforced_copper_chestplate");
-        reinforcedCopperLeggings.setType("LEGGINGS");
-        reinforcedCopperLeggings.setId("reinforced_copper_leggings");
-        reinforcedCopperBoots.setType("BOOTS");
-        reinforcedCopperBoots.setId("reinforced_copper_boots");
-
-        reinforcedEmeraldHelmet.setId("reinforced_emerald_helmet");
         reinforcedEmeraldChestplate.setType("CHESTPLATE");
         reinforcedEmeraldChestplate.setId("reinforced_emerald_chestplate");
-        reinforcedEmeraldLeggings.setType("LEGGINGS");
-        reinforcedEmeraldLeggings.setId("reinforced_emerald_leggings");
-        reinforcedEmeraldBoots.setType("BOOTS");
-        reinforcedEmeraldBoots.setId("reinforced_emerald_boots");
-
-        reinforcedAmethystHelmet.setId("reinforced_amethyst_helmet");
         reinforcedAmethystChestplate.setType("CHESTPLATE");
         reinforcedAmethystChestplate.setId("reinforced_amethyst_chestplate");
+
+        reinforcedCopperLeggings.setType("LEGGINGS");
+        reinforcedCopperLeggings.setId("reinforced_copper_leggings");
+        reinforcedEmeraldLeggings.setType("LEGGINGS");
+        reinforcedEmeraldLeggings.setId("reinforced_emerald_leggings");
         reinforcedAmethystLeggings.setType("LEGGINGS");
         reinforcedAmethystLeggings.setId("reinforced_amethyst_leggings");
+
+        reinforcedCopperBoots.setType("BOOTS");
+        reinforcedCopperBoots.setId("reinforced_copper_boots");
+        reinforcedEmeraldBoots.setType("BOOTS");
+        reinforcedEmeraldBoots.setId("reinforced_emerald_boots");
         reinforcedAmethystBoots.setType("BOOTS");
         reinforcedAmethystBoots.setId("reinforced_amethyst_boots");
 
@@ -90,6 +85,10 @@ public class Item {
         reinforcedCopperHoe.setId("reinforced_copper_hoe");
         reinforcedEmeraldHoe.setId("reinforced_emerald_hoe");
         reinforcedAmethystHoe.setId("reinforced_amethyst_hoe");
+
+        reinforcedCopperShard.setId("reinforced_copper_ingot");
+        reinforcedEmeraldShard.setId("reinforced_emerald_shard");
+        reinforcedAmethystShard.setId("reinforced_amethyst_shard");
     }
 
 }

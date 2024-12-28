@@ -14,7 +14,7 @@ public abstract class PrototypeItem {
     public abstract PrototypeItem clone();
 
     protected void updateItem(String id){
-        RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(ExampleMod.nomeMod, id));
+        RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(ExampleMod.MOD_ID, id));
         Function<Item.Settings, Item> factory = Item::new;
         Item item = factory.apply(new Item.Settings().registryKey(key));
         if (item instanceof BlockItem blockItem) blockItem.appendBlocks(Item.BLOCK_ITEMS, item);

@@ -15,7 +15,7 @@ import java.util.function.Function;
 public class RegistrarBlocos {
 
     public static Block registrarBloco(String id, Function<AbstractBlock.Settings, Block> factory, AbstractBlock.Settings settings) {
-        RegistryKey<Block> key = RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(ExampleMod.nomeMod, id));
+        RegistryKey<Block> key = RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(ExampleMod.MOD_ID, id));
 
         Block bloco = factory.apply(settings.registryKey(key));
 

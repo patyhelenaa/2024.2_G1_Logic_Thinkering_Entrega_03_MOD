@@ -1,6 +1,5 @@
 package com.example;
 
-import com.example.ExampleMod;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.Item;
@@ -24,7 +23,7 @@ public class GuiaInventario {
                 .build();
         LOGICTHINKERING_GRUPO = RegistryKey.of(
                 Registries.ITEM_GROUP.getKey(),
-                Identifier.of(ExampleMod.nomeMod, "logicthinkering")
+                Identifier.of(ExampleMod.MOD_ID, "logicthinkering")
         );
         Registry.register(Registries.ITEM_GROUP, LOGICTHINKERING_GRUPO, LOGICTHINKERING_ITEM_GRUPO);
     }

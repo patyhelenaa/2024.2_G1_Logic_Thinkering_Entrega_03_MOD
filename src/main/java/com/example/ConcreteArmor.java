@@ -10,6 +10,7 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 
+import java.util.Objects;
 import java.util.function.Function;
 
 
@@ -28,18 +29,18 @@ public class ConcreteArmor extends PrototypeItem {
     private Material material;
 
     public ConcreteArmor(String id, String type, String material) {
-        this.id = id;
         this.type = ArmorType.valueOf(type.toUpperCase());
         this.material = Material.valueOf(material.toUpperCase());
+        if(id != null) setId(id);
     }
 
     @Override
-    public PrototypeItem clone() {
-        return new ConcreteArmor(this.id, this.type.name(), this.material.name());
+    public ConcreteArmor clone() {
+        return new ConcreteArmor(null, this.type.name(), this.material.name());
     }
 
     public void updateItem(String id, Function<Item.Settings, Item> factory) {
-        RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(ExampleMod.nomeMod, id));
+        RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(ExampleMod.MOD_ID, id));
         Item.Settings settings = new Item.Settings();
         Item item = factory.apply(settings.registryKey(key));
         if (item instanceof BlockItem blockItem) blockItem.appendBlocks(Item.BLOCK_ITEMS, item);

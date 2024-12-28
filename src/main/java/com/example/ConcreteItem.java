@@ -11,7 +11,7 @@ public class ConcreteItem extends PrototypeItem {
     }
 
     @Override
-    public PrototypeItem clone() {
+    public ConcreteItem clone() {
         return new ConcreteItem(this.id);
     }
 
