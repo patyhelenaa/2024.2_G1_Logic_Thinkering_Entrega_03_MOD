@@ -1,10 +1,9 @@
 package com.example;
 
 public class ModItem {
-    private ConcreteItem concreteItem = new ConcreteItem("");
-    private ConcreteItem reinforcedCopperShard = concreteItem.clone();
-    private ConcreteItem reinforcedEmeraldShard = concreteItem.clone();
-    private ConcreteItem reinforcedAmethystShard = concreteItem.clone();
+    private ConcreteItem reinforcedCopperShard = new ConcreteItem("reinforced_copper_ingot");
+    private ConcreteItem reinforcedEmeraldShard = reinforcedCopperShard.clone();
+    private ConcreteItem reinforcedAmethystShard = reinforcedCopperShard.clone();
 
     private ConcreteArmor reinforcedCopperHelmet = new ConcreteArmor("reinforced_copper_helmet", "HELMET", "REINFORCED_COPPER");
     private ConcreteArmor reinforcedCopperChestplate = reinforcedCopperHelmet.clone();
@@ -98,7 +97,6 @@ public class ModItem {
         reinforcedAmethystHoe.setId("reinforced_amethyst_hoe");
         reinforcedAmethystHoe.setType("HOE");
 
-        reinforcedCopperShard.setId("reinforced_copper_ingot");
         reinforcedEmeraldShard.setId("reinforced_emerald_shard");
         reinforcedAmethystShard.setId("reinforced_amethyst_shard");
     }

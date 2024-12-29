@@ -14,12 +14,12 @@ public class ConcreteItem implements PrototypeItem {
     public static Item ITEM;
 
     public ConcreteItem(String id) {
-        this.id = id;
+        if(id != null) setId(id);
     }
 
     @Override
     public ConcreteItem clone() {
-        return new ConcreteItem(this.id);
+        return new ConcreteItem(null);
     }
 
     @Override
