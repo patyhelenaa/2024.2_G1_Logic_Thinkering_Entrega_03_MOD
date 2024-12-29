@@ -40,7 +40,7 @@ public class ConcreteArmor implements PrototypeItem {
     @Override
     public void updateItem(String id) {
         Function<Item.Settings, Item> factory = (settings) -> new ArmorItem(
-                MateriaisArmadura.valueOf(this.material.name()),
+                ModArmorMaterial.valueOf(this.material.name()),
                 EquipmentType.valueOf(this.type.name()),
                 settings);
 

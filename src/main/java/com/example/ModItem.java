@@ -1,6 +1,6 @@
 package com.example;
 
-public class Item {
+public class ModItem {
     private ConcreteItem concreteItem = new ConcreteItem("");
     private ConcreteItem reinforcedCopperShard = concreteItem.clone();
     private ConcreteItem reinforcedEmeraldShard = concreteItem.clone();
@@ -43,7 +43,7 @@ public class Item {
     private ConcreteTool reinforcedAmethystHoe = reinforcedAmethystSword.clone();
 
 
-    public Item() {
+    public ModItem() {
 
         reinforcedCopperChestplate.setType("CHESTPLATE");
         reinforcedCopperChestplate.setId("reinforced_copper_chestplate");

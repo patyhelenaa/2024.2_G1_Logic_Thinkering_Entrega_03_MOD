@@ -9,7 +9,7 @@ import net.minecraft.util.Util;
 
 import java.util.EnumMap;
 
-public interface MateriaisArmadura {
+public interface ModArmorMaterial {
 
     ArmorMaterial REINFORCED_COPPER = new ArmorMaterial(37, Util.make(new EnumMap<>(EquipmentType.class), (map) -> {
         map.put(EquipmentType.BOOTS, 3);

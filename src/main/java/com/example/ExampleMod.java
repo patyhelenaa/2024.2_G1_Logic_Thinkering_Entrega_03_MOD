@@ -9,10 +9,9 @@ public class ExampleMod implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
 	@Override
-
 	public void onInitialize() {
 		Blocos.Inicializa();
-		new Item();
+		new ModItem();
 		LOGGER.info("OK");
 	}
 }
