@@ -9,11 +9,12 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Identifier;
 import java.util.function.Function;
 
-public class ConcreteItem implements PrototypeItem {
+public class ConcreteItem extends PrototypeItem {
     private String id;
     public static Item ITEM;
 
     public ConcreteItem(String id) {
+        strategy = new ConcreteRegisterItem();
         if(id != null) setId(id);
     }
 
@@ -23,21 +24,15 @@ public class ConcreteItem implements PrototypeItem {
     }
 
     @Override
-    public void updateItem(String id) {
-        RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(ExampleMod.MOD_ID, id));
-        Function<Item.Settings, Item> factory = Item::new;
-        Item item = factory.apply(new Item.Settings().registryKey(key));
-        if (item instanceof BlockItem blockItem) blockItem.appendBlocks(Item.BLOCK_ITEMS, item);
-        ConcreteItem.ITEM = Registry.register(Registries.ITEM, key, item);
-        insertOnGroup(ConcreteItem.ITEM);
+    public void register(String id) {
+        ITEM = strategy.register(id);
     }
 
     public void updateMaterial(String material) {}
 
     public void setId(String id) {
         this.id = id;
-        updateItem(id);
+        register(id);
     }
-
 
 }

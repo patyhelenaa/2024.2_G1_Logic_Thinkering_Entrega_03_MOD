@@ -1,18 +1,8 @@
 package com.example;
 
-import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.equipment.EquipmentType;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.RegistryKeys;
-import net.minecraft.util.Identifier;
 
-import java.util.function.Function;
-
-
-public class ConcreteArmor implements PrototypeItem {
+public class ConcreteArmor extends PrototypeItem {
 
     private enum ArmorType {
         HELMET, CHESTPLATE, LEGGINGS, BOOTS
@@ -27,6 +17,7 @@ public class ConcreteArmor implements PrototypeItem {
     private Material material;
 
     public ConcreteArmor(String id, String type, String material) {
+        strategy = new ConcreteRegisterArmor();
         this.type = ArmorType.valueOf(type.toUpperCase());
         this.material = Material.valueOf(material.toUpperCase());
         if(id != null) setId(id);
@@ -38,24 +29,13 @@ public class ConcreteArmor implements PrototypeItem {
     }
 
     @Override
-    public void updateItem(String id) {
-        Function<Item.Settings, Item> factory = (settings) -> new ArmorItem(
-                ModArmorMaterial.valueOf(this.material.name()),
-                EquipmentType.valueOf(this.type.name()),
-                settings);
-
-        RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(ExampleMod.MOD_ID, id));
-        Item.Settings settings = new Item.Settings();
-        Item item = factory.apply(settings.registryKey(key));
-        ConcreteArmor.ITEM = Registry.register(Registries.ITEM, key, item);
-
-        insertOnGroup(ConcreteArmor.ITEM);
+    public void register(String id) {
+        ITEM = strategy.register(id, this.material.name(), this.type.name());
     }
-
 
     public void setId(String id) {
         this.id = id;
-        updateItem(this.id);
+        register(this.id);
     }
 
     public void setType(String type){

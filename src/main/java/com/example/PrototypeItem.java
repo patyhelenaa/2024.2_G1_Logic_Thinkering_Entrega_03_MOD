@@ -1,11 +1,9 @@
 package com.example;
-import net.minecraft.item.Item;
 
-public interface PrototypeItem {
-    default void insertOnGroup(Item item) {
-        ModItemGroup.addItem(item);
-    }
-    PrototypeItem clone();
-    void updateItem(String id);
-    void updateMaterial(String material);
+public abstract class PrototypeItem {
+    protected StrategyRegister strategy;
+
+    public abstract PrototypeItem clone();
+    public abstract void register(String id);
+    public abstract void updateMaterial(String material);
 }

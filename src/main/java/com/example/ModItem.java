@@ -29,7 +29,7 @@ public class ModItem {
             String id = "reinforced_" + type.toLowerCase() + "_" + typePrototype;
             T item = (T) prototype.clone();
             item.updateMaterial("REINFORCED_" + type);
-            item.updateItem(id);
+            item.register(id);
             storage.put(id, item);
         }
     }
