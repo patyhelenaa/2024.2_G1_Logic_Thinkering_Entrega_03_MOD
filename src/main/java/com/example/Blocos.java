@@ -28,7 +28,7 @@ public class Blocos {
     );
 
     public static void Inicializa() {
-        ItemGroupEvents.modifyEntriesEvent(ItemGroups.BUILDING_BLOCKS).register(entries -> {
+        ItemGroupEvents.modifyEntriesEvent(ModItemGroup.LOGICTHINKERING_GROUP).register(entries -> {
             entries.add(Blocos.CLOCK);
             entries.add(Blocos.BLOCO_MINERACAO);
             entries.add(Blocos.MATRIZ_FIOS);
