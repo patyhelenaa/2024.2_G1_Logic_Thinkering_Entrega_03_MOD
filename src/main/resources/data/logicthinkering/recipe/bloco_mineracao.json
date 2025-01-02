@@ -2,9 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "key": {
     "M": "logicthinkering:matriz_fios",
-    "C": "logicthinkering:cobre_reforcado",
-    "E": "logicthinkering:esmeralda_reforcado",
-    "A": "logicthinkering:ametista_reforcado",
+    "C": "logicthinkering:reinforced_copper_ingot",
+    "E": "logicthinkering:reinforced_emerald_shard",
+    "A": "logicthinkering:reinforced_amethyst_shard",
     "D": "minecraft:diamond_pickaxe",
     "O": "minecraft:obsidian"
   },
