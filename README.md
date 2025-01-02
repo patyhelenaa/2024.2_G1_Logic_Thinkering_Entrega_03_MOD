@@ -13,25 +13,90 @@ Vídeo 1 - Escudo com carga
 
 <center>
 
-Figura 1 - Menu Logic Thinkering
+<img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G1_Logic_Thinkering_Entrega_03/main/assets/modimages/itemgroup.jpeg?raw=true"/>
 
-<img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G1_Logic_Thinkering_Entrega_02/refs/heads/main/assets/mod/menu_mine.png?raw=true"/>
+Figura 1 - Menu Logic Thinkering
 
 </center>
 
 <center>
+
+<img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G1_Logic_Thinkering_Entrega_03/main/assets/modimages/ccr.png?raw=true"/>
 
 Figura 2 - Cobre Reforçado
 
-<img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G1_Logic_Thinkering_Entrega_02/refs/heads/main/assets/mod/menu_mine_cr.png?raw=true"/>
+</center>
+
+<center>
+
+<img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G1_Logic_Thinkering_Entrega_03/main/assets/modimages/cer.png?raw=true"/>
+
+Figura 3 - Esmeralda Reforçada
 
 </center>
 
 <center>
 
-Figura 3 - Adição de bloco
+<img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G1_Logic_Thinkering_Entrega_03/main/assets/modimages/car.png?raw=true"/>
 
-<img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G1_Logic_Thinkering_Entrega_02/refs/heads/main/assets/mod/bloco.png?raw=true"/>
+Figura 4 - Esmeralda Reforçada
+
+</center>
+
+<center>
+
+<img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G1_Logic_Thinkering_Entrega_03/main/assets/modimages/kcr.jpeg?raw=true"/>
+
+Figura 5 - Ferramentas de Cobre
+
+</center>
+
+<center>
+
+<img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G1_Logic_Thinkering_Entrega_03/main/assets/modimages/ker.jpeg?raw=true"/>
+
+Figura 6 - Ferramentas de Esmeralda
+
+</center>
+
+<center>
+
+<img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G1_Logic_Thinkering_Entrega_03/main/assets/modimages/kar.jpeg?raw=true"/>
+
+Figura 7 - Ferramentas de Ametista
+
+</center>
+
+<center>
+
+<img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G1_Logic_Thinkering_Entrega_03/main/assets/modimages/armaduras.jpeg?raw=true"/>
+
+Figura 8 - Armaduras Reforçadas
+
+</center>
+
+<center>
+
+<img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G1_Logic_Thinkering_Entrega_03/main/assets/modimages/bmf.jpeg?raw=true"/>
+
+Figura 9 - Matriz de Fios
+
+</center>
+
+<center>
+
+<img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G1_Logic_Thinkering_Entrega_03/main/assets/modimages/clockativo.jpeg?raw=true"/>
+<img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G1_Logic_Thinkering_Entrega_03/main/assets/modimages/clockdesativo.jpeg?raw=true"/>
+
+Figura 10 - Clocker
+
+</center>
+
+<center>
+
+<img src="https://raw.githubusercontent.com/UnBArqDsw2024-2/2024.2_G1_Logic_Thinkering_Entrega_03/main/assets/modimages/miner.jpeg?raw=true"/>
+
+Figura 11 - Bloco de Mineração
 
 </center>
 
