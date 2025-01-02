@@ -12,27 +12,27 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
-public class GuiaInventario {
-    public static final RegistryKey<ItemGroup> LOGICTHINKERING_GRUPO;
-    public static final ItemGroup LOGICTHINKERING_ITEM_GRUPO;
+public class ModItemGroup {
+    public static final RegistryKey<ItemGroup> LOGICTHINKERING_GROUP;
+    public static final ItemGroup LOGICTHINKERING_ITEM_GROUP;
 
     static {
-        LOGICTHINKERING_ITEM_GRUPO = FabricItemGroup.builder()
+        LOGICTHINKERING_ITEM_GROUP = FabricItemGroup.builder()
                 .icon(() -> new ItemStack(Items.CRAFTER))
                 .displayName(Text.translatable("Logic Thinkering"))
                 .build();
-        LOGICTHINKERING_GRUPO = RegistryKey.of(
+        LOGICTHINKERING_GROUP = RegistryKey.of(
                 Registries.ITEM_GROUP.getKey(),
                 Identifier.of(ExampleMod.MOD_ID, "logicthinkering")
         );
-        Registry.register(Registries.ITEM_GROUP, LOGICTHINKERING_GRUPO, LOGICTHINKERING_ITEM_GRUPO);
+        Registry.register(Registries.ITEM_GROUP, LOGICTHINKERING_GROUP, LOGICTHINKERING_ITEM_GROUP);
     }
 
-    private GuiaInventario() {
+    private ModItemGroup() {
         throw new UnsupportedOperationException("Esta é uma classe utilitária e não pode ser instanciada.");
     }
 
-    public static void adicionarItem(Item item) {
-        ItemGroupEvents.modifyEntriesEvent(LOGICTHINKERING_GRUPO).register(itemGroup -> itemGroup.add(item));
+    public static void addItem(Item item) {
+        ItemGroupEvents.modifyEntriesEvent(LOGICTHINKERING_GROUP).register(itemGroup -> itemGroup.add(item));
     }
 }
