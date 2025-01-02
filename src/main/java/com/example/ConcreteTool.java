@@ -28,14 +28,14 @@ public class ConcreteTool implements PrototypeItem {
     private Material material;
 
     public ConcreteTool(String id, String type, String material) {
-        this.id = id;
         this.type = ToolType.valueOf(type.toUpperCase());
         this.material = Material.valueOf(material.toUpperCase());
+        if(id != null) setId(id);
     }
 
     @Override
     public ConcreteTool clone() {
-        return new ConcreteTool(this.id, this.type.name(), this.material.name());
+        return new ConcreteTool(null, this.type.name(), this.material.name());
     }
 
     @Override
@@ -63,7 +63,7 @@ public class ConcreteTool implements PrototypeItem {
         this.type = ToolType.valueOf(type.toUpperCase());
     }
 
-    public void setMaterial(String material) {
+    public void updateMaterial(String material) {
         this.material = Material.valueOf(material.toUpperCase());
     }
 

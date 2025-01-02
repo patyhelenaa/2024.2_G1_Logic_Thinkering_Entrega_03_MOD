@@ -1,104 +1,37 @@
 package com.example;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ModItem {
-    private ConcreteItem reinforcedCopperShard = new ConcreteItem("reinforced_copper_ingot");
-    private ConcreteItem reinforcedEmeraldShard = reinforcedCopperShard.clone();
-    private ConcreteItem reinforcedAmethystShard = reinforcedCopperShard.clone();
-
-    private ConcreteArmor reinforcedCopperHelmet = new ConcreteArmor("reinforced_copper_helmet", "HELMET", "REINFORCED_COPPER");
-    private ConcreteArmor reinforcedCopperChestplate = reinforcedCopperHelmet.clone();
-    private ConcreteArmor reinforcedCopperLeggings = reinforcedCopperHelmet.clone();
-    private ConcreteArmor reinforcedCopperBoots = reinforcedCopperHelmet.clone();
-
-    private ConcreteArmor reinforcedEmeraldHelmet = new ConcreteArmor("reinforced_emerald_helmet", "HELMET", "REINFORCED_EMERALD");
-    private ConcreteArmor reinforcedEmeraldChestplate = reinforcedEmeraldHelmet.clone();
-    private ConcreteArmor reinforcedEmeraldLeggings = reinforcedEmeraldHelmet.clone();
-    private ConcreteArmor reinforcedEmeraldBoots = reinforcedEmeraldHelmet.clone();
-
-    private ConcreteArmor reinforcedAmethystHelmet = new ConcreteArmor("reinforced_amethyst_helmet", "HELMET", "REINFORCED_AMETHYST");
-    private ConcreteArmor reinforcedAmethystChestplate = reinforcedAmethystHelmet.clone();
-    private ConcreteArmor reinforcedAmethystLeggings = reinforcedAmethystHelmet.clone();
-    private ConcreteArmor reinforcedAmethystBoots = reinforcedAmethystHelmet.clone();
-
-
-    private ConcreteTool reinforcedCopperSword = new ConcreteTool("reinforced_copper_sword", "SWORD", "REINFORCED_COPPER");
-    private ConcreteTool reinforcedCopperAxe = reinforcedCopperSword.clone();
-    private ConcreteTool reinforcedCopperPickaxe = reinforcedCopperSword.clone();
-    private ConcreteTool reinforcedCopperShovel = reinforcedCopperSword.clone();
-    private ConcreteTool reinforcedCopperHoe = reinforcedCopperSword.clone();
-
-
-    private ConcreteTool reinforcedEmeraldSword = new ConcreteTool("reinforced_emerald_sword", "SWORD", "REINFORCED_EMERALD");
-    private ConcreteTool reinforcedEmeraldAxe = reinforcedEmeraldSword.clone();
-    private ConcreteTool reinforcedEmeraldPickaxe = reinforcedEmeraldSword.clone();
-    private ConcreteTool reinforcedEmeraldShovel = reinforcedEmeraldSword.clone();
-    private ConcreteTool reinforcedEmeraldHoe = reinforcedEmeraldSword.clone();
-
-
-    private ConcreteTool reinforcedAmethystSword = new ConcreteTool("reinforced_amethyst_sword", "SWORD", "REINFORCED_AMETHYST");
-    private ConcreteTool reinforcedAmethystAxe = reinforcedAmethystSword.clone();
-    private ConcreteTool reinforcedAmethystPickaxe = reinforcedAmethystSword.clone();
-    private ConcreteTool reinforcedAmethystShovel = reinforcedAmethystSword.clone();
-    private ConcreteTool reinforcedAmethystHoe = reinforcedAmethystSword.clone();
-
+    public Map<String, ConcreteItem> items = new HashMap<>();
+    public Map<String, ConcreteArmor> armors = new HashMap<>();
+    public Map<String, ConcreteTool> tools = new HashMap<>();
 
     public ModItem() {
+        String[] materials = {"EMERALD", "AMETHYST"};
+        String[] armorTypes = {"HELMET", "CHESTPLATE", "LEGGINGS", "BOOTS"};
+        String[] toolTypes = {"SWORD", "AXE", "PICKAXE", "SHOVEL", "HOE"};
 
-        reinforcedCopperChestplate.setType("CHESTPLATE");
-        reinforcedCopperChestplate.setId("reinforced_copper_chestplate");
-        reinforcedEmeraldChestplate.setType("CHESTPLATE");
-        reinforcedEmeraldChestplate.setId("reinforced_emerald_chestplate");
-        reinforcedAmethystChestplate.setType("CHESTPLATE");
-        reinforcedAmethystChestplate.setId("reinforced_amethyst_chestplate");
+        ConcreteItem prototypeItem = new ConcreteItem("reinforced_copper_ingot");
+        insertItems("shard", prototypeItem, materials, items, "reinforced_copper_ingot");
 
-        reinforcedCopperLeggings.setType("LEGGINGS");
-        reinforcedCopperLeggings.setId("reinforced_copper_leggings");
-        reinforcedEmeraldLeggings.setType("LEGGINGS");
-        reinforcedEmeraldLeggings.setId("reinforced_emerald_leggings");
-        reinforcedAmethystLeggings.setType("LEGGINGS");
-        reinforcedAmethystLeggings.setId("reinforced_amethyst_leggings");
+        for(String armorType : armorTypes)
+            insertItems(armorType.toLowerCase(), new ConcreteArmor("reinforced_copper_" + armorType.toLowerCase(), armorType, "REINFORCED_COPPER"), materials, armors, "reinforced_copper_" + armorType.toLowerCase());
 
-        reinforcedCopperBoots.setType("BOOTS");
-        reinforcedCopperBoots.setId("reinforced_copper_boots");
-        reinforcedEmeraldBoots.setType("BOOTS");
-        reinforcedEmeraldBoots.setId("reinforced_emerald_boots");
-        reinforcedAmethystBoots.setType("BOOTS");
-        reinforcedAmethystBoots.setId("reinforced_amethyst_boots");
+        for(String tool : toolTypes)
+            insertItems(tool.toLowerCase(), new ConcreteTool("reinforced_copper_" + tool.toLowerCase(), tool, "REINFORCED_COPPER"), materials, tools, "reinforced_copper_" + tool.toLowerCase());
+    }
 
-        reinforcedCopperSword.setId("reinforced_copper_sword");
-        reinforcedEmeraldSword.setId("reinforced_emerald_sword");
-        reinforcedAmethystSword.setId("reinforced_amethyst_sword");
-
-        reinforcedCopperAxe.setId("reinforced_copper_axe");
-        reinforcedCopperAxe.setType("AXE");
-        reinforcedEmeraldAxe.setId("reinforced_emerald_axe");
-        reinforcedEmeraldAxe.setType("AXE");
-        reinforcedAmethystAxe.setId("reinforced_amethyst_axe");
-        reinforcedAmethystAxe.setType("AXE");
-
-        reinforcedCopperPickaxe.setId("reinforced_copper_pickaxe");
-        reinforcedCopperPickaxe.setType("PICKAXE");
-        reinforcedEmeraldPickaxe.setId("reinforced_emerald_pickaxe");
-        reinforcedEmeraldPickaxe.setType("PICKAXE");
-        reinforcedAmethystPickaxe.setId("reinforced_amethyst_pickaxe");
-        reinforcedAmethystPickaxe.setType("PICKAXE");
-
-        reinforcedCopperShovel.setId("reinforced_copper_shovel");
-        reinforcedCopperShovel.setType("SHOVEL");
-        reinforcedEmeraldShovel.setId("reinforced_emerald_shovel");
-        reinforcedEmeraldShovel.setType("SHOVEL");
-        reinforcedAmethystShovel.setId("reinforced_amethyst_shovel");
-        reinforcedAmethystShovel.setType("SHOVEL");
-
-        reinforcedCopperHoe.setId("reinforced_copper_hoe");
-        reinforcedCopperHoe.setType("HOE");
-        reinforcedEmeraldHoe.setId("reinforced_emerald_hoe");
-        reinforcedEmeraldHoe.setType("HOE");
-        reinforcedAmethystHoe.setId("reinforced_amethyst_hoe");
-        reinforcedAmethystHoe.setType("HOE");
-
-        reinforcedEmeraldShard.setId("reinforced_emerald_shard");
-        reinforcedAmethystShard.setId("reinforced_amethyst_shard");
+    private <T extends PrototypeItem> void insertItems(String typePrototype, T prototype, String[] types, Map<String, T> storage, String prototypeId) {
+        storage.put(prototypeId, prototype);
+        for (String type : types) {
+            String id = "reinforced_" + type.toLowerCase() + "_" + typePrototype;
+            T item = (T) prototype.clone();
+            item.updateMaterial("REINFORCED_" + type);
+            item.updateItem(id);
+            storage.put(id, item);
+        }
     }
 
 }

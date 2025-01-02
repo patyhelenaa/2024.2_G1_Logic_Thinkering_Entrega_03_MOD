@@ -32,9 +32,14 @@ public class ConcreteItem implements PrototypeItem {
         insertOnGroup(ConcreteItem.ITEM);
     }
 
+    public void updateMaterial(String material) {
+        return;
+    }
+
     public void setId(String id) {
         this.id = id;
         updateItem(id);
     }
+
 
 }

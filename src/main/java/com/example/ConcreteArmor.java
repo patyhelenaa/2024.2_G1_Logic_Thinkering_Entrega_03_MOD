@@ -62,8 +62,9 @@ public class ConcreteArmor implements PrototypeItem {
         this.type = ArmorType.valueOf(type.toUpperCase());
     }
 
-    public void setMaterial(String material){
+    public void updateMaterial(String material){
         this.material = Material.valueOf(material.toUpperCase());
     }
+
 }
 
