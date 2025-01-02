@@ -15,15 +15,21 @@ public class ConcreteRegisterArmor implements StrategyRegister {
 
     @Override
     public Item register(String id) {
+        throw new UnsupportedOperationException("Use register with material and type for armor.");
+    }
+
+    @Override
+    public Item register(String id, String material, String type) {
         Function<Item.Settings, Item> factory = (settings) -> new ArmorItem(
-                ModArmorMaterial.valueOf(this.material.name()),
-                EquipmentType.valueOf(this.type.name()),
+                ModArmorMaterial.valueOf(material),
+                EquipmentType.valueOf(type),
                 settings);
 
         RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(ExampleMod.MOD_ID, id));
         Item.Settings settings = new Item.Settings();
         Item item = factory.apply(settings.registryKey(key));
-        return(Registry.register(Registries.ITEM, key, item));
+        Item result = Registry.register(Registries.ITEM, key, item);
+        insertOnGroup(result);
+        return(result);
     }
-
 }

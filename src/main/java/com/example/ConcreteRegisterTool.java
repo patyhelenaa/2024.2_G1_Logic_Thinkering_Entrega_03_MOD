@@ -13,21 +13,31 @@ public class ConcreteRegisterTool implements StrategyRegister {
 
     @Override
     public Item register(String id) {
+        throw new UnsupportedOperationException("Use register with material and type for armor.");
+    }
+
+    @Override
+    public Item register(String id, String material, String type) {
         Function<Item.Settings, Item> factory = (settings) -> {
-            ToolMaterial material = MateriaisFerramenta.valueOf(this.material.name());
-            return switch (this.type) {
-                case SWORD -> new SwordItem(material, 3, -1.9F, settings);
-                case AXE -> new AxeItem(material, 6, -2.7F, settings);
-                case PICKAXE -> new PickaxeItem(material, 1, -2.8F, settings);
-                case SHOVEL -> new ShovelItem(material, 1.5F, -3.0F, settings);
-                case HOE -> new HoeItem(material, -3, 0.0F, settings);
+            ToolMaterial materialtool = MateriaisFerramenta.valueOf(material);
+
+            return switch (type) {
+                case "SWORD" -> new SwordItem(materialtool, 3, -1.9F, settings);
+                case "AXE" -> new AxeItem(materialtool, 6, -2.7F, settings);
+                case "PICKAXE" -> new PickaxeItem(materialtool, 1, -2.8F, settings);
+                case "SHOVEL" -> new ShovelItem(materialtool, 1.5F, -3.0F, settings);
+                case "HOE" -> new HoeItem(materialtool, -3, 0.0F, settings);
+                default -> throw new IllegalStateException("Unexpected value: " + type);
             };
+
         };
 
         RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(ExampleMod.MOD_ID, id));
         Item.Settings settings = new Item.Settings();
         Item item = factory.apply(settings.registryKey(key));
-        return(Registry.register(Registries.ITEM, key, item));
+        Item result = Registry.register(Registries.ITEM, key, item);
+        insertOnGroup(result);
+        return(result);
     }
 
 }

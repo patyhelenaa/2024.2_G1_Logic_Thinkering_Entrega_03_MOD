@@ -18,7 +18,14 @@ public class ConcreteRegisterItem implements StrategyRegister {
         Function<Item.Settings, Item> factory = Item::new;
         Item item = factory.apply(new Item.Settings().registryKey(key));
         if (item instanceof BlockItem blockItem) blockItem.appendBlocks(Item.BLOCK_ITEMS, item);
-        return(Registry.register(Registries.ITEM, key, item));
+        Item result =  Registry.register(Registries.ITEM, key, item);
+        insertOnGroup(result);
+        return(result);
+    }
+
+    @Override
+    public Item register(String id, String material, String type) {
+        throw new UnsupportedOperationException("Register with material and type is not supported for generic items.");
     }
 
 }
