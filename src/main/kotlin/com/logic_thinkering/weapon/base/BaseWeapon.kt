@@ -11,7 +11,7 @@ import net.minecraft.text.Text
 abstract class BaseWeapon(
     material: ToolMaterial,
     settings: Settings
-) : SwordItem(material, settings), WeaponBehavior {
+) : SwordItem(material, 4.0F, 5.0F, settings), WeaponBehavior {
     override fun onHit(stack: ItemStack, target: LivingEntity, attacker: LivingEntity): Boolean {
         return super.postHit(stack, target, attacker)
     }

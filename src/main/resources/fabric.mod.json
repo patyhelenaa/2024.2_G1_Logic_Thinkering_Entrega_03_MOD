@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "logic-thinkering",
+  "id": "logic_thinkering",
   "version": "${version}",
   "name": "Logic Thinkering",
   "description": "This is an example description! Tell everyone what your mod is about!",
@@ -17,14 +17,12 @@
   "entrypoints": {
     "main": [
       {
-        "value": "com.logic_thinkering.Main",
-        "adapter": "java"
+        "value": "com.logic_thinkering.Main"
       }
     ],
     "client": [
       {
-        "value": "com.logic_thinkering.LogicThinkeringClient",
-        "adapter": "java"
+        "value": "com.logic_thinkering.LogicThinkeringClient"
       }
     ],
     "fabric-datagen": [

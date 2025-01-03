@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "logicthinkering:item/reinforced_amethyst_shovel"
+    "layer0": "logic-thinkering:item/reinforced_amethyst_shovel"
   }
 }

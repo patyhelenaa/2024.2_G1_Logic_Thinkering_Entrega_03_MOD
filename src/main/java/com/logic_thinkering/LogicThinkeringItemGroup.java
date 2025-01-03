@@ -23,7 +23,7 @@ public class LogicThinkeringItemGroup {
                 .build();
         LOGICTHINKERING_GROUP = RegistryKey.of(
                 Registries.ITEM_GROUP.getKey(),
-                Identifier.of(Main.MOD_ID, "logicthinkering")
+                Identifier.of(Main.MOD_ID, "logic-thinkering")
         );
         Registry.register(Registries.ITEM_GROUP, LOGICTHINKERING_GROUP, LOGICTHINKERING_ITEM_GROUP);
     }

@@ -11,6 +11,7 @@ import net.minecraft.item.tooltip.TooltipType
 import net.minecraft.text.Text
 import net.minecraft.util.Formatting
 import net.minecraft.item.Item.TooltipContext
+import net.minecraft.server.world.ServerWorld
 
 class ChargeableWeaponDecorator(
     weapon: WeaponBehavior,
@@ -47,7 +48,8 @@ class ChargeableWeaponDecorator(
     private fun dealChargedDamage(target: LivingEntity, attacker: PlayerEntity, chargeLevel: Int) {
         // Use the baseAttackDamage parameter instead of trying to cast
         val damageDealt = baseAttackDamage * (kotlin.math.max(chargeLevel, maxCharge) + 1)
-        target.damage(target.damageSources.playerAttack(attacker), damageDealt)
+        val world = target.world
+        target.damage(world as ServerWorld,target.damageSources.playerAttack(attacker), damageDealt)
     }
 
     private fun resetCharge(stack: ItemStack) {
@@ -76,7 +78,7 @@ class ChargeableWeaponDecorator(
         val chargeLevel = getCurrentCharge(stack)
         if (chargeLevel > 0) {
             tooltip.add(
-                Text.translatable("item.logic-thinkering.counter.info", chargeLevel)
+                Text.translatable("item.logic_thinkering.counter.info", chargeLevel)
                     .formatted(Formatting.GOLD)
             )
         }

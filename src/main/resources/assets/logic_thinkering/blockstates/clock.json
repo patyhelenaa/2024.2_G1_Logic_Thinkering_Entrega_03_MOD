@@ -1,5 +1,5 @@
 {
   "variants": {
-    "": { "model": "logicthinkering:block/clock" }
+    "": { "model": "logic-thinkering:block/clock" }
   }
 }

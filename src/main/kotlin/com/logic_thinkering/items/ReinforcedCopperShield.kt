@@ -1,6 +1,6 @@
 package com.logic_thinkering.items
 
-import com.logic_thinkering.ModComponents.CHARGE_COMPONENT
+import com.logic_thinkering.ModComponents
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.item.ShieldItem
@@ -63,11 +63,11 @@ class ReinforcedCopperShield : ShieldItem(
             ?: player.offHandStack.takeIf { it.item is ReinforcedCopperSword }
 
     private fun handleSwordCharge(sword: ItemStack, player: PlayerEntity) {
-        val currentCharge = sword.get(CHARGE_COMPONENT) ?: 0
+        val currentCharge = sword.get(ModComponents.CHARGE_COMPONENT) ?: 0
         if (currentCharge >= MAX_CHARGE) return
 
         val newCharge = currentCharge + 1
-        sword.set(CHARGE_COMPONENT, newCharge)
+        sword.set(ModComponents.CHARGE_COMPONENT, newCharge)
 
         playSwordChargeSound(player.world, player.pos, currentCharge)
         spawnChargeParticles(player.world, player.pos, newCharge)

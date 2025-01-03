@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "logicthinkering:block/bloco_mineracao"
+    "all": "logic-thinkering:block/bloco_mineracao"
   }
 }

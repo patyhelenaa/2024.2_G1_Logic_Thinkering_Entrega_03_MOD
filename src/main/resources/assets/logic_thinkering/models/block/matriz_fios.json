@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "logicthinkering:block/matriz_fios"
+    "all": "logic-thinkering:block/matriz_fios"
   }
 }

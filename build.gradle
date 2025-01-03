@@ -25,7 +25,7 @@ loom {
 	splitEnvironmentSourceSets()
 
 	mods {
-		"logic-thinkering" {
+		"logic_thinkering" {
 			sourceSet sourceSets.main
 			sourceSet sourceSets.client
 		}

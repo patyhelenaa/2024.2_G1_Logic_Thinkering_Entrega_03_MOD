@@ -1,4 +1,4 @@
-package com.logic_thinkering;
+package com.example;
 
 import net.minecraft.item.equipment.ArmorMaterial;
 import net.minecraft.item.equipment.EquipmentModels;
@@ -9,7 +9,7 @@ import net.minecraft.util.Util;
 
 import java.util.EnumMap;
 
-public interface ArmorMaterial {
+public interface ModArmorMaterial {
 
     ArmorMaterial REINFORCED_COPPER = new ArmorMaterial(37, Util.make(new EnumMap<>(EquipmentType.class), (map) -> {
         map.put(EquipmentType.BOOTS, 3);
@@ -36,15 +36,11 @@ public interface ArmorMaterial {
     }), 15, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 3.0F, 0.1F, ItemTags.REPAIRS_GOLD_ARMOR, EquipmentModels.NETHERITE);
 
     static ArmorMaterial valueOf(String name) {
-        switch (name.toUpperCase()) {
-            case "REINFORCED_COPPER":
-                return REINFORCED_COPPER;
-            case "REINFORCED_EMERALD":
-                return REINFORCED_EMERALD;
-            case "REINFORCED_AMETHYST":
-                return REINFORCED_AMETHYST;
-            default:
-                throw new IllegalArgumentException("Unknown material: " + name);
-        }
+        return switch (name.toUpperCase()) {
+            case "REINFORCED_COPPER" -> REINFORCED_COPPER;
+            case "REINFORCED_EMERALD" -> REINFORCED_EMERALD;
+            case "REINFORCED_AMETHYST" -> REINFORCED_AMETHYST;
+            default -> throw new IllegalArgumentException("Unknown material: " + name);
+        };
     }
 }

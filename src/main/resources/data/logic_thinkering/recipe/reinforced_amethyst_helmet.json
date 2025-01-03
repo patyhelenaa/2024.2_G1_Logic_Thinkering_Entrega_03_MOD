@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "key": {
-    "C": "logicthinkering:reinforced_amethyst_shard"
+    "C": "logic_thinkering:reinforced_amethyst_shard"
   },
   "pattern": [
     "CCC",
@@ -10,6 +10,6 @@
   ],
   "result": {
     "count": 1,
-    "id": "logicthinkering:reinforced_amethyst_helmet"
+    "id": "logic_thinkering:reinforced_amethyst_helmet"
   }
 }

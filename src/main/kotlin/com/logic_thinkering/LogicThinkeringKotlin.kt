@@ -1,8 +1,8 @@
 package com.logic_thinkering
 
 import com.logic_thinkering.digitalcircuits.*
-import com.logic_thinkering.reinforceditems.ReinforcedCopperShield
-import com.logic_thinkering.reinforceditems.ReinforcedCopperSword
+import com.logic_thinkering.items.ReinforcedCopperShield
+import com.logic_thinkering.items.ReinforcedCopperSword
 import net.fabricmc.api.ModInitializer
 import net.minecraft.block.AbstractBlock.Settings
 import net.minecraft.block.Blocks
@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory
  * Registering blocks, items and componentes and setting the mod's identifier.
  */
 object LogicThinkeringKotlin : ModInitializer {
-    const val MOD_ID = "logic-thinkering"
+    const val MOD_ID = "logic_thinkering"
     val logger: Logger = LoggerFactory.getLogger(MOD_ID)
 
     fun initialize() {

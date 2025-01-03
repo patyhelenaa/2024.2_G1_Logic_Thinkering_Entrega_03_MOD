@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shaped",
   "key": {
-    "M": "logicthinkering:matriz_fios",
+    "M": "logic_thinkering:matriz_fios",
     "R": "minecraft:repeater",
     "C": "minecraft:clock"
   },
@@ -12,6 +12,6 @@
   ],
   "result": {
     "count": 1,
-    "id": "logicthinkering:clock"
+    "id": "logic_thinkering:clock"
   }
 }

@@ -5,7 +5,7 @@ import net.minecraft.util.Identifier;
 
 import java.util.function.BiConsumer;
 
-public interface EquipmentModel {
+public interface ModeloEquipamento {
     Identifier COBRE_REFORCADO = Identifier.of(Main.MOD_ID, "cobre_reforcado");
     Identifier ESMERALDA_REFORCADA = Identifier.of(Main.MOD_ID, "esmeralda_reforcada");
     Identifier AMETISTA_REFORCADA = Identifier.of(Main.MOD_ID, "ametista_reforcada");
