@@ -1,17 +1,26 @@
 package com.logic_thinkering.items
 
+import com.logic_thinkering.LogicThinkeringKotlin
 import com.logic_thinkering.ModComponents
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.item.ShieldItem
 import net.minecraft.particle.ParticleTypes
+import net.minecraft.registry.RegistryKey
+import net.minecraft.registry.RegistryKeys
 import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvents
+import net.minecraft.util.Identifier
 import net.minecraft.util.math.Vec3d
 import net.minecraft.world.World
 
-class ReinforcedCopperShield : ShieldItem(
-    Settings().maxDamage(336)
+class ReinforcedCopperShield(name: String = "reinforced_copper_shield"): ShieldItem(
+    Settings().maxDamage(336).registryKey(
+        RegistryKey.of(
+            RegistryKeys.ITEM,
+            Identifier.of(LogicThinkeringKotlin.MOD_ID, name)
+        )
+    )
 ) {
     companion object {
         private const val MIN_DAMAGE_THRESHOLD = 1.0f

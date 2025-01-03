@@ -1,5 +1,6 @@
 package com.logic_thinkering.items
 
+import com.logic_thinkering.LogicThinkeringKotlin
 import com.logic_thinkering.ModComponents
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
@@ -7,6 +8,8 @@ import net.minecraft.item.ItemStack
 import net.minecraft.item.SwordItem
 import net.minecraft.item.ToolMaterial
 import net.minecraft.item.tooltip.TooltipType
+import net.minecraft.registry.RegistryKey
+import net.minecraft.registry.RegistryKeys
 import net.minecraft.registry.tag.BlockTags
 import net.minecraft.registry.tag.ItemTags
 import net.minecraft.server.world.ServerWorld
@@ -14,6 +17,7 @@ import net.minecraft.sound.SoundCategory
 import net.minecraft.sound.SoundEvents
 import net.minecraft.text.Text
 import net.minecraft.util.Formatting
+import net.minecraft.util.Identifier
 import kotlin.math.max
 
 class ReinforcedCopperSword(
@@ -24,7 +28,13 @@ class ReinforcedCopperSword(
         2.0f,
         14,
         ItemTags.STONE_TOOL_MATERIALS),
-    settings: Settings = Settings()
+    name: String = "reinforced_copper_sword",
+    settings: Settings = Settings().registryKey(
+        RegistryKey.of(
+            RegistryKeys.ITEM,
+            Identifier.of(LogicThinkeringKotlin.MOD_ID, name)
+        )
+    )
 ) : SwordItem(material, 4.0F, 5.0F, settings) {
 
     companion object {

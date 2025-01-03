@@ -31,7 +31,7 @@ annotation class ItemRegistryDsl
 @ItemRegistryDsl
 class ItemRegistryBuilder {
     private val items = mutableListOf<Pair<Item, String>>()
-    private var itemGroup : RegistryKey<ItemGroup>? = null
+    private var itemGroup: RegistryKey<ItemGroup>? = null
 
 
     /**
