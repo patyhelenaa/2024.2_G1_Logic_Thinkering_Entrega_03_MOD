@@ -3,7 +3,7 @@
   "package": "com.logic_thinkering.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "com.example.LivingEntityMixin"
+    "LivingEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1
