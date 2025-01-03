@@ -79,7 +79,7 @@ abstract class AbstractLogicGate(settings: Settings, private val logicStrategy: 
          return InputPower(
              hasPowerFromNeighbor(world, pos, facing.rotateYClockwise()),
              hasPowerFromNeighbor(world, pos, facing.rotateYCounterclockwise()),
-             hasPowerFromNeighbor(world, pos, facing.opposite),
+             hasPowerFromNeighbor(world, pos, facing),
          )
     }
 
