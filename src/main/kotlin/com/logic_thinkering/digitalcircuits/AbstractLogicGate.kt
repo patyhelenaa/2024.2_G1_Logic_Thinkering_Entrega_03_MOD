@@ -29,7 +29,7 @@ data class InputPower(
  * neighboring blocks.
  *
  * @param settings The settings from the block, passed to the superclass 'AbstractRedstoneGateBlock'.
- * @param logicFunction a function that takes the input power from neighboring blocks and returns a boolean
+ * @param logicStrategy a strategy for the respective logic gate
  * indicating whether the gate should be powered
  */
 abstract class AbstractLogicGate(settings: Settings, private val logicStrategy: LogicStrategy) :
