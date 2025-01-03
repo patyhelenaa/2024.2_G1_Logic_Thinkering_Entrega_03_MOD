@@ -1,7 +1,6 @@
-package com.logicthinkering
+package com.logicthinkering.items
 
 import com.logicthinkering.ModComponents.CHARGE_COMPONENT
-import com.logicthinkering.items.ReinforcedCopperSword
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
 import net.minecraft.item.ShieldItem

@@ -1,6 +1,6 @@
 package com.logicthinkering.items
 
-import com.logicthinkering.ReinforcedCopperMaterial
+import com.logicthinkering.materials.ReinforcedCopperMaterial
 import com.logicthinkering.weapon.WeaponBehavior
 import com.logicthinkering.weapon.base.BaseWeapon
 import com.logicthinkering.weapon.decorator.ChargeableWeaponDecorator

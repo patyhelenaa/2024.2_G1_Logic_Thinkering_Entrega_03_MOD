@@ -1,4 +1,4 @@
-package com.logicthinkering
+package com.logicthinkering.materials
 
 import net.minecraft.block.Block
 import net.minecraft.item.Items

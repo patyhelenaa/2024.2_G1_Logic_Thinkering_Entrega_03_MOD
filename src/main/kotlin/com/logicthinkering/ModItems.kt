@@ -1,6 +1,7 @@
 package com.logicthinkering
 
 import com.logicthinkering.LogicThinkering.MOD_ID
+import com.logicthinkering.items.ReinforcedCopperShield
 import com.logicthinkering.items.ReinforcedCopperSword
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
 import net.minecraft.item.Item
