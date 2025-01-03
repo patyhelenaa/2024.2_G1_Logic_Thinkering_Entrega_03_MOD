@@ -1,7 +1,6 @@
 package com.example.network;
 
 import com.example.ExampleMod;
-import com.jcraft.jorbis.Block;
 import net.minecraft.network.RegistryByteBuf;
 import net.minecraft.network.codec.PacketCodec;
 import net.minecraft.network.packet.CustomPayload;

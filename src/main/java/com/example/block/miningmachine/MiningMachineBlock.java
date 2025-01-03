@@ -2,6 +2,7 @@ package com.example.block.miningmachine;
 
 import com.example.block.entity.MiningMachineBlockEntity;
 import com.mojang.serialization.MapCodec;
+import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.LivingEntity;
@@ -20,7 +21,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MiningMachineBlock extends BlockWithEntity {
-    private final List<BlockPos> blocksToMine = new ArrayList<>();
 
     public MiningMachineBlock(Settings settings) {
         super(settings);
@@ -63,21 +63,18 @@ public class MiningMachineBlock extends BlockWithEntity {
     @Override
     public ActionResult onUse(BlockState state, World world, BlockPos pos, PlayerEntity player, BlockHitResult hit) {
         if (!world.isClient) {
-            NamedScreenHandlerFactory screenHandlerFactory = state.createScreenHandlerFactory(world, pos);
-            if (screenHandlerFactory != null) {
-                player.openHandledScreen(screenHandlerFactory);
+            if (world.getBlockEntity(pos) instanceof MiningMachineBlockEntity miningMachineBlockEntity) {
+                player.openHandledScreen(miningMachineBlockEntity);
             }
         }
         return ActionResult.SUCCESS;
     }
 
-    private void startMining(ServerWorld world, BlockPos pos) {
+    public void startMining(ServerWorld world, BlockPos pos) {
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (blockEntity instanceof MiningMachineBlockEntity miningMachineBlockEntity) {
-            blocksToMine.clear();
-            miningMachineBlockEntity.getMiningStrategy().mine(world, pos, blocksToMine);
-
-            if (!blocksToMine.isEmpty()) {
+            miningMachineBlockEntity.getMiningStrategy().mine(world, pos, miningMachineBlockEntity.getBlocksToMine());
+            if (!miningMachineBlockEntity.getBlocksToMine().isEmpty()) {
                 world.scheduleBlockTick(pos, this, 20);
             }
         }
@@ -85,18 +82,20 @@ public class MiningMachineBlock extends BlockWithEntity {
 
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (!blocksToMine.isEmpty()) {
-            BlockPos targetPos = blocksToMine.getFirst();
-            BlockState targetState = world.getBlockState(targetPos);
-            BlockEntity blockEntity = world.getBlockEntity(pos);
+        BlockEntity blockEntity = world.getBlockEntity(pos);
 
-            if (blockEntity instanceof MiningMachineBlockEntity miningMachineEntity) {
+        if (blockEntity instanceof MiningMachineBlockEntity miningMachineEntity) {
+            List<BlockPos> blocksToMine = miningMachineEntity.getBlocksToMine();
+            if (!blocksToMine.isEmpty()) {
+                BlockPos targetPos = blocksToMine.getFirst();
+                BlockState targetState = world.getBlockState(targetPos);
+
                 List<ItemStack> drops = Block.getDroppedStacks(
                         targetState,
                         world,
                         targetPos,
                         world.getBlockEntity(targetPos),
-                        null,
+                         null,
                         ItemStack.EMPTY
                 );
 
@@ -117,15 +116,14 @@ public class MiningMachineBlock extends BlockWithEntity {
                 }
 
                 drops.forEach(miningMachineEntity::addItemToInventory);
-
                 blocksToMine.removeFirst();
                 world.breakBlock(targetPos, false);
             }
-        }
 
-        // Agendar o próximo tick de mineração, se houver blocos restantes
-        if (!blocksToMine.isEmpty()) {
-            world.scheduleBlockTick(pos, this, 20);
+            // Agendar o próximo tick de mineração, se houver blocos restantes
+            if (!blocksToMine.isEmpty()) {
+                world.scheduleBlockTick(pos, this, 20);
+            }
         }
     }
 }

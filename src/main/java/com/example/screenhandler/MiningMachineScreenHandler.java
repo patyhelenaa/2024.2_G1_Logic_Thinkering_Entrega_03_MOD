@@ -1,5 +1,7 @@
 package com.example.screenhandler;
 
+import com.example.block.entity.MiningMachineBlockEntity;
+import com.example.network.BlockPosPayload;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventory;
@@ -10,15 +12,18 @@ import net.minecraft.screen.slot.Slot;
 
 public class MiningMachineScreenHandler extends ScreenHandler {
     private final Inventory inventory;
+    private final MiningMachineBlockEntity blockEntity;
 
-    public MiningMachineScreenHandler(int syncId, PlayerInventory playerInventory) {
-        this(syncId, playerInventory, new SimpleInventory(9));
+    public MiningMachineScreenHandler(int syncId, PlayerInventory playerInventory, BlockPosPayload payload) {
+        this(syncId,
+                playerInventory,
+                (MiningMachineBlockEntity) playerInventory.player.getWorld().getBlockEntity(payload.pos()));
     }
 
-    public MiningMachineScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory) {
+    public MiningMachineScreenHandler(int syncId, PlayerInventory playerInventory, MiningMachineBlockEntity blockEntity) {
         super(ModScreenHandlers.MINING_MACHINE_SCREEN_HANDLER, syncId);
-        checkSize(inventory, 9);
-        this.inventory = inventory;
+        this.inventory = blockEntity;
+        this.blockEntity = blockEntity;
         inventory.onOpen(playerInventory.player);
 
         addInventoryGridSlots();

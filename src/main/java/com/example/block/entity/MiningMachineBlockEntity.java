@@ -11,20 +11,23 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
-import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.RegistryWrapper;
-import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MiningMachineBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory<BlockPosPayload>, ImplementedInventory {
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(9, ItemStack.EMPTY);
+    private final List<BlockPos> blocksToMine = new ArrayList<>();
     private MiningStrategy miningStrategy;
 
     public MiningMachineBlockEntity(BlockPos pos, BlockState state) {
@@ -83,6 +86,11 @@ public class MiningMachineBlockEntity extends BlockEntity implements ExtendedScr
         return Text.of("Mining Machine Block");
     }
 
+    @Override
+    public BlockPosPayload getScreenOpeningData(ServerPlayerEntity serverPlayerEntity) {
+        return new BlockPosPayload(this.pos);
+    }
+
     @Nullable
     @Override
     public ScreenHandler createMenu(int syncId, PlayerInventory playerInventory, PlayerEntity player) {
@@ -101,16 +109,15 @@ public class MiningMachineBlockEntity extends BlockEntity implements ExtendedScr
         super.writeNbt(nbt, registryLookup);
     }
 
+    public List<BlockPos> getBlocksToMine() {
+        return blocksToMine;
+    }
+
     public MiningStrategy getMiningStrategy() {
         return miningStrategy;
     }
 
-    public void setMiningStrategy(MiningStrategy miningStrategy) {
-        this.miningStrategy = miningStrategy;
-    }
-
-    @Override
-    public BlockPosPayload getScreenOpeningData(ServerPlayerEntity serverPlayerEntity) {
-        return new BlockPosPayload(this.pos);
+    public void setMiningStrategy(MiningStrategy newStrategy, ServerWorld world, BlockPos pos) {
+        this.miningStrategy = newStrategy;
     }
 }
