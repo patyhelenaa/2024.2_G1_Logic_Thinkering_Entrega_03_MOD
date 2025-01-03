@@ -1,6 +1,6 @@
 package com.example;
 
-import com.example.block.MiningMachineBlock;
+import com.example.block.miningmachine.MiningMachineBlock;
 import com.example.block.ClockEnergy;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;

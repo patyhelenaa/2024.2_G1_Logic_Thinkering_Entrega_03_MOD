@@ -1,27 +1,35 @@
 package com.example.block.entity;
 
 import com.example.BlockEntities;
+import com.example.block.miningmachine.LineMiningStrategy;
+import com.example.block.miningmachine.MiningStrategy;
+import com.example.network.BlockPosPayload;
 import com.example.screenhandler.MiningMachineScreenHandler;
+import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerFactory;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.Inventories;
+import net.minecraft.inventory.SimpleInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NbtCompound;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.math.BlockPos;
 import org.jetbrains.annotations.Nullable;
 
-public class MiningMachineBlockEntity extends BlockEntity implements NamedScreenHandlerFactory, ImplementedInventory {
+public class MiningMachineBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory<BlockPosPayload>, ImplementedInventory {
     private final DefaultedList<ItemStack> inventory = DefaultedList.ofSize(9, ItemStack.EMPTY);
+    private MiningStrategy miningStrategy;
 
     public MiningMachineBlockEntity(BlockPos pos, BlockState state) {
         super(BlockEntities.ENTIDADE_BLOCO_MINERACAO, pos, state);
+        this.miningStrategy = new LineMiningStrategy(60);
     }
 
     public DefaultedList<ItemStack> getItems() {
@@ -91,5 +99,18 @@ public class MiningMachineBlockEntity extends BlockEntity implements NamedScreen
     public void writeNbt(NbtCompound nbt, RegistryWrapper.WrapperLookup registryLookup) {
         Inventories.writeNbt(nbt, inventory, registryLookup);
         super.writeNbt(nbt, registryLookup);
+    }
+
+    public MiningStrategy getMiningStrategy() {
+        return miningStrategy;
+    }
+
+    public void setMiningStrategy(MiningStrategy miningStrategy) {
+        this.miningStrategy = miningStrategy;
+    }
+
+    @Override
+    public BlockPosPayload getScreenOpeningData(ServerPlayerEntity serverPlayerEntity) {
+        return new BlockPosPayload(this.pos);
     }
 }
