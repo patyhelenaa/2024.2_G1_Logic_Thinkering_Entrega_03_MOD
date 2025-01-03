@@ -12,38 +12,38 @@
     "sources": "https://github.com/FabricMC/fabric-example-mod"
   },
   "license": "CC0-1.0",
-  "icon": "assets/logic-thinkering/icon.png",
+  "icon": "assets/logic_thinkering/icon.png",
   "environment": "*",
   "entrypoints": {
     "main": [
       {
-        "value": "com.logicthinkering.LogicThinkering",
-        "adapter": "kotlin"
+        "value": "com.logic_thinkering.Main",
+        "adapter": "java"
       }
     ],
     "client": [
       {
-        "value": "com.logicthinkering.LogicThinkeringClient",
-        "adapter": "kotlin"
+        "value": "com.logic_thinkering.LogicThinkeringClient",
+        "adapter": "java"
       }
     ],
     "fabric-datagen": [
       {
-        "value": "com.logicthinkering.LogicThinkeringDataGenerator",
+        "value": "com.logic_thinkering.LogicThinkeringDataGenerator",
         "adapter": "kotlin"
       }
     ]
   },
   "mixins": [
-    "logic-thinkering.mixins.json",
+    "logic_thinkering.mixins.json",
     {
-      "config": "logic-thinkering.client.mixins.json",
+      "config": "logic_thinkering.client.mixins.json",
       "environment": "client"
     }
   ],
   "depends": {
-    "fabricloader": ">=0.16.9",
-    "minecraft": "~1.21",
+    "fabricloader": ">=0.16.7",
+    "minecraft": "~1.21.3",
     "java": ">=21",
     "fabric-api": "*",
     "fabric-language-kotlin": "*"
