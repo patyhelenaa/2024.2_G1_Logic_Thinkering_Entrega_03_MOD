@@ -3,22 +3,18 @@ package com.logic_thinkering.itens;
 import net.minecraft.item.Item;
 
 public class ConcreteTool extends PrototypeItem {
+
     private enum ToolType {
         AXE, HOE, PICKAXE, SHOVEL, SWORD
-    }
-    private enum Material {
-        REINFORCED_COPPER, REINFORCED_EMERALD, REINFORCED_AMETHYST
     }
 
     public static Item ITEM;
     private String id;
     private ToolType type;
-    private Material material;
 
     public ConcreteTool(String id, String type, String material) {
         strategy = new ConcreteRegisterTool();
         this.type = ToolType.valueOf(type.toUpperCase());
-        this.material = Material.valueOf(material.toUpperCase());
         if(id != null) setId(id);
     }
 
@@ -36,8 +32,8 @@ public class ConcreteTool extends PrototypeItem {
         this.type = ToolType.valueOf(type.toUpperCase());
     }
 
-    public void updateMaterial(String material) {
-        this.material = Material.valueOf(material.toUpperCase());
+    public void updateMaterial(Material material) {
+        this.material = material;
     }
 
     public void setId(String id) {

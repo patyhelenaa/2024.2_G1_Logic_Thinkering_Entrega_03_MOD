@@ -7,9 +7,6 @@ public class ConcreteArmor extends PrototypeItem {
     private enum ArmorType {
         HELMET, CHESTPLATE, LEGGINGS, BOOTS
     }
-    private enum Material {
-        REINFORCED_COPPER, REINFORCED_EMERALD, REINFORCED_AMETHYST
-    }
 
     public static Item ITEM;
     private String id;

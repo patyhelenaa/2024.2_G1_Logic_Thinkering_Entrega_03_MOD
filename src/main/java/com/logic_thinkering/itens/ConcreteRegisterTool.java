@@ -1,7 +1,7 @@
 package com.logic_thinkering.itens;
 
-import com.logic_thinkering.Main;
 import net.minecraft.item.*;
+import net.minecraft.item.ToolMaterial;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
@@ -20,7 +20,7 @@ public class ConcreteRegisterTool implements StrategyRegister {
     @Override
     public Item register(String id, String material, String type) {
         Function<Item.Settings, Item> factory = (settings) -> {
-            net.minecraft.item.ToolMaterial materialtool = ToolMaterial.valueOf(material);
+            ToolMaterial materialtool = ModToolMaterial.valueOf(material);
 
             return switch (type) {
                 case "SWORD" -> new SwordItem(materialtool, 3, -1.9F, settings);
@@ -33,12 +33,13 @@ public class ConcreteRegisterTool implements StrategyRegister {
 
         };
 
-        RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Main.MOD_ID, id));
+        RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(ExampleMod.MOD_ID, id));
         Item.Settings settings = new Item.Settings();
         Item item = factory.apply(settings.registryKey(key));
         Item result = Registry.register(Registries.ITEM, key, item);
         insertOnGroup(result);
         return(result);
     }
+
 
 }

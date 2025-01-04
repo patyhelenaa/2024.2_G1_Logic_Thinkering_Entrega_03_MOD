@@ -1,6 +1,5 @@
 package com.logic_thinkering.itens;
 
-import com.logic_thinkering.Main;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -15,7 +14,7 @@ public class ConcreteRegisterItem implements StrategyRegister {
 
     @Override
     public Item register(String id) {
-        RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Main.MOD_ID, id));
+        RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(ExampleMod.MOD_ID, id));
         Function<Item.Settings, Item> factory = Item::new;
         Item item = factory.apply(new Item.Settings().registryKey(key));
         if (item instanceof BlockItem blockItem) blockItem.appendBlocks(Item.BLOCK_ITEMS, item);
