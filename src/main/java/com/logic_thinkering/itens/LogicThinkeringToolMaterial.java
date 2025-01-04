@@ -5,11 +5,13 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.item.Item;
 
-public class ModToolMaterial implements Material {
+public class LogicThinkeringToolMaterial implements Material {
 
     private ToolMaterial material;
+    private String name;
 
-    public ModToolMaterial(
+    public LogicThinkeringToolMaterial(
+            String name,
             TagKey<Block> incorrectBlocksForDrops,
             int durability,
             float speed,
@@ -17,6 +19,7 @@ public class ModToolMaterial implements Material {
             int enchantmentValue,
             TagKey<Item> repairItems
     ) {
+        this.name = name;
         this.material = new ToolMaterial(
                 incorrectBlocksForDrops,
                 durability,
@@ -27,7 +30,9 @@ public class ModToolMaterial implements Material {
         );
     }
 
-    public ToolMaterial getMaterial() { return material; }
+    public ToolMaterial getMaterial() {
+        return material;
+    }
 
     @Override
     public void updateSettings(int i, int j, float k, float l) {
@@ -50,4 +55,10 @@ public class ModToolMaterial implements Material {
                 repairItems
         );
     }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
 }

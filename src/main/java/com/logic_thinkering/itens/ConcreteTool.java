@@ -4,28 +4,27 @@ import net.minecraft.item.Item;
 
 public class ConcreteTool extends PrototypeItem {
 
-    private enum ToolType {
-        AXE, HOE, PICKAXE, SHOVEL, SWORD
-    }
-
     public static Item ITEM;
     private String id;
     private ToolType type;
 
-    public ConcreteTool(String id, String type, String material) {
-        strategy = new ConcreteRegisterTool();
-        this.type = ToolType.valueOf(type.toUpperCase());
-        if(id != null) setId(id);
+    public ConcreteTool(String id, ToolType type, Material material) {
+        if (material instanceof LogicThinkeringToolMaterial materialtool) {
+            strategy = new ConcreteRegisterTool();
+            this.type = type;
+            this.material = materialtool;
+            if(id != null) setId(id);
+        }
     }
 
     @Override
     public ConcreteTool clone() {
-        return new ConcreteTool(null, this.type.name(), this.material.name());
+        return new ConcreteTool(null, this.type, this.material);
     }
 
     @Override
     public void register(String id) {
-        ITEM = strategy.register(id, this.material.name(), this.type.name());
+        ITEM = strategy.register(id, this.material, this.type.name());
     }
 
     public void setType(String type) {
@@ -33,7 +32,9 @@ public class ConcreteTool extends PrototypeItem {
     }
 
     public void updateMaterial(Material material) {
-        this.material = material;
+        if (material instanceof LogicThinkeringToolMaterial materialtool) {
+            this.material = materialtool;
+        }
     }
 
     public void setId(String id) {

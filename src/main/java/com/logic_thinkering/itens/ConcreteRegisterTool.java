@@ -22,33 +22,29 @@ public class ConcreteRegisterTool implements StrategyRegister {
 
     @Override
     public Item register(String id, Material material, String type) {
-        Function<Item.Settings, Item> factory = (settings) -> {
-            ToolMaterial materialtool = new ModToolMaterial(
-                    BlockTags.INCORRECT_FOR_STONE_TOOL,
-                    500,
-                    6.0F,
-                    3.0F,
-                    15,
-                    ItemTags.STONE_TOOL_MATERIALS
-            ).getMaterial();
 
-            return switch (type) {
-                case "SWORD" -> new SwordItem(materialtool, 3, -1.9F, settings);
-                case "AXE" -> new AxeItem(materialtool, 6, -2.7F, settings);
-                case "PICKAXE" -> new PickaxeItem(materialtool, 1, -2.8F, settings);
-                case "SHOVEL" -> new ShovelItem(materialtool, 1.5F, -3.0F, settings);
-                case "HOE" -> new HoeItem(materialtool, -3, 0.0F, settings);
-                default -> throw new IllegalStateException("Unexpected value: " + type);
+        if (material instanceof LogicThinkeringToolMaterial materialtool) {
+            Function<Item.Settings, Item> factory = (settings) -> {
+
+                return switch (type) {
+                    case "SWORD" -> new SwordItem(materialtool.getMaterial(), 3, -1.9F, settings);
+                    case "AXE" -> new AxeItem(materialtool.getMaterial(), 6, -2.7F, settings);
+                    case "PICKAXE" -> new PickaxeItem(materialtool.getMaterial(), 1, -2.8F, settings);
+                    case "SHOVEL" -> new ShovelItem(materialtool.getMaterial(), 1.5F, -3.0F, settings);
+                    case "HOE" -> new HoeItem(materialtool.getMaterial(), -3, 0.0F, settings);
+                    default -> throw new IllegalStateException("Unexpected value: " + type);
+                };
             };
 
-        };
+            RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Main.MOD_ID, id));
+            Item.Settings settings = new Item.Settings();
+            Item item = factory.apply(settings.registryKey(key));
+            Item result = Registry.register(Registries.ITEM, key, item);
+            insertOnGroup(result);
+            return(result);
+        }
+        else throw new IllegalArgumentException("Material must be an instance of ToolMaterial");
 
-        RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Main.MOD_ID, id));
-        Item.Settings settings = new Item.Settings();
-        Item item = factory.apply(settings.registryKey(key));
-        Item result = Registry.register(Registries.ITEM, key, item);
-        insertOnGroup(result);
-        return(result);
     }
 
 
