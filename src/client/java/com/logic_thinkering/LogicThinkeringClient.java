@@ -3,6 +3,7 @@ package com.logic_thinkering;
 import com.logic_thinkering.screen.MiningMachineScreen;
 import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.client.gui.screen.ingame.HandledScreens;
+import net.fabricmc.api.ClientModInitializer;
 
 public class LogicThinkeringClient implements ClientModInitializer {
     @Override

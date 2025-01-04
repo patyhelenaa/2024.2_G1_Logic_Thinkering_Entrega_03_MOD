@@ -1,4 +1,4 @@
-package com.logic_thinkering;
+package com.example;
 
 import net.minecraft.item.equipment.ArmorMaterial;
 import net.minecraft.item.equipment.EquipmentModels;
