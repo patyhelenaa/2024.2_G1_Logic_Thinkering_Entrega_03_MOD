@@ -116,7 +116,7 @@ class BlockRegistryBuilder {
                 if (registerItems) {
                     val itemKey = RegistryKey.of(RegistryKeys.ITEM, id)
                     val itemSettings = Item.Settings().registryKey(itemKey)
-                    Registry.register(Registries.ITEM, id, BlockItem(it, itemSettings))
+                    LogicThinkeringItemGroup.addItem(Registry.register(Registries.ITEM, id, BlockItem(it, itemSettings)))
                 }
             }
         }
