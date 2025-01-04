@@ -22,7 +22,7 @@ public class ConcreteRegisterArmor implements StrategyRegister {
     @Override
     public Item register(String id, Material material, String type) {
 
-        if (material instanceof MaterialArmadura materialArmadura) {
+        if (material instanceof LogicThinkeringArmorMaterial materialArmadura) {
             Function<Item.Settings, Item> factory = (settings) -> new ArmorItem(
                     materialArmadura.getMaterial(),
                     EquipmentType.valueOf(type),
@@ -35,6 +35,7 @@ public class ConcreteRegisterArmor implements StrategyRegister {
             insertOnGroup(result);
             return result;
         }
+
         else throw new IllegalArgumentException("Material must be an instance of MaterialArmadura");
     }
 }

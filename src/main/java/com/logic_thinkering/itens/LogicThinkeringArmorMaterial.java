@@ -10,19 +10,21 @@ import net.minecraft.util.Identifier;
 import java.util.EnumMap;
 
 
-public class MaterialArmadura implements Material {
+public class LogicThinkeringArmorMaterial implements Material {
 
     private ArmorMaterial material;
+    private String name;
 
-    public MaterialArmadura(
-        int durability,
-        Integer[] defense,
-        int enchantmentValue,
-        RegistryEntry<SoundEvent> equipSound,
-        float toughness,
-        float knockbackResistance,
-        TagKey<Item> repairIngredient,
-        Identifier modelId
+    public LogicThinkeringArmorMaterial(
+            String name,
+            int durability,
+            int[] defense,
+            int enchantmentValue,
+            RegistryEntry<SoundEvent> equipSound,
+            float toughness,
+            float knockbackResistance,
+            TagKey<Item> repairIngredient,
+            Identifier modelId
     ) {
         EnumMap<EquipmentType, Integer> map = new EnumMap<>(EquipmentType.class);
         map.put(EquipmentType.BOOTS, defense[0]);
@@ -31,6 +33,7 @@ public class MaterialArmadura implements Material {
         map.put(EquipmentType.HELMET, defense[3]);
         map.put(EquipmentType.BODY, defense[4]);
 
+        this.name = name;
         this.material = new ArmorMaterial(
                 durability,
                 map,
@@ -44,6 +47,11 @@ public class MaterialArmadura implements Material {
 
     public ArmorMaterial getMaterial() {
         return material;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 
     @Override
