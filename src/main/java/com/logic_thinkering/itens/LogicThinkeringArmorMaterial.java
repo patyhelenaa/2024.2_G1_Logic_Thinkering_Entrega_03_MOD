@@ -10,19 +10,19 @@ import net.minecraft.util.Identifier;
 import java.util.EnumMap;
 
 
-public class MaterialArmadura implements Material {
+public class LogicThinkeringArmorMaterial implements Material {
 
     private ArmorMaterial material;
 
-    public MaterialArmadura(
-        int durability,
-        Integer[] defense,
-        int enchantmentValue,
-        RegistryEntry<SoundEvent> equipSound,
-        float toughness,
-        float knockbackResistance,
-        TagKey<Item> repairIngredient,
-        Identifier modelId
+    public LogicThinkeringArmorMaterial(
+            int durability,
+            int[] defense,
+            int enchantmentValue,
+            RegistryEntry<SoundEvent> equipSound,
+            float toughness,
+            float knockbackResistance,
+            TagKey<Item> repairIngredient,
+            Identifier modelId
     ) {
         EnumMap<EquipmentType, Integer> map = new EnumMap<>(EquipmentType.class);
         map.put(EquipmentType.BOOTS, defense[0]);

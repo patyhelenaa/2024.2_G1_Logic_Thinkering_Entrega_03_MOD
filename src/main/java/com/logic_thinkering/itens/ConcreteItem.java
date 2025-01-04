@@ -14,6 +14,7 @@ public class ConcreteItem extends PrototypeItem {
     public static Item ITEM;
 
     public ConcreteItem(String id) {
+        this.material = null;
         strategy = new ConcreteRegisterItem();
         if(id != null) setId(id);
     }
@@ -28,7 +29,10 @@ public class ConcreteItem extends PrototypeItem {
         ITEM = strategy.register(id);
     }
 
-    public void updateMaterial(String material) {}
+    @Override
+    public void updateMaterial(Material material) {
+        throw new IllegalArgumentException("This class does not support updateMaterial");
+    }
 
     public void setId(String id) {
         this.id = id;

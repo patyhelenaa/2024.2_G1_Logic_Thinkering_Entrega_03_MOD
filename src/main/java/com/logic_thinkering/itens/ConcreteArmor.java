@@ -4,30 +4,27 @@ import net.minecraft.item.Item;
 
 public class ConcreteArmor extends PrototypeItem {
 
-    private enum ArmorType {
-        HELMET, CHESTPLATE, LEGGINGS, BOOTS
-    }
-
     public static Item ITEM;
     private String id;
     private ArmorType type;
-    private Material material;
 
-    public ConcreteArmor(String id, String type, String material) {
-        strategy = new ConcreteRegisterArmor();
-        this.type = ArmorType.valueOf(type.toUpperCase());
-        this.material = Material.valueOf(material.toUpperCase());
-        if(id != null) setId(id);
+    public ConcreteArmor(String id, String type, Material material) {
+        if (material instanceof LogicThinkeringArmorMaterial materialArmadura) {
+            strategy = new ConcreteRegisterArmor();
+            this.type = ArmorType.valueOf(type.toUpperCase());
+            this.material = materialArmadura;
+            if(id != null) setId(id);
+        }
     }
 
     @Override
     public ConcreteArmor clone() {
-        return new ConcreteArmor(null, this.type.name(), this.material.name());
+        return new ConcreteArmor(null, this.type.name(), this.material);
     }
 
     @Override
     public void register(String id) {
-        ITEM = strategy.register(id, this.material.name(), this.type.name());
+        ITEM = strategy.register(id, this.material, this.type.name());
     }
 
     public void setId(String id) {
@@ -39,8 +36,10 @@ public class ConcreteArmor extends PrototypeItem {
         this.type = ArmorType.valueOf(type.toUpperCase());
     }
 
-    public void updateMaterial(String material){
-        this.material = Material.valueOf(material.toUpperCase());
+    public void updateMaterial(Material material){
+        if (material instanceof LogicThinkeringArmorMaterial materialArmadura) {
+            this.material = materialArmadura;
+        }
     }
 
 }

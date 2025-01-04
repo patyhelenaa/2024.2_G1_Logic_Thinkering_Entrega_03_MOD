@@ -1,10 +1,9 @@
 package com.logic_thinkering;
 
-import com.logic_thinkering.itens.ConcreteArmor;
-import com.logic_thinkering.itens.ConcreteItem;
-import com.logic_thinkering.itens.ConcreteTool;
-import com.logic_thinkering.itens.PrototypeItem;
-
+import com.logic_thinkering.itens.*;
+import net.minecraft.item.equipment.EquipmentModels;
+import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.sound.SoundEvents;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,6 +13,19 @@ public class LogicThinkeringItem {
     public Map<String, ConcreteTool> tools = new HashMap<>();
 
     public LogicThinkeringItem() {
+        LogicThinkeringArmorMaterial REINFORCED_COPPER = new LogicThinkeringArmorMaterial(
+                37,
+                new int[]{3, 6, 8, 3, 11},
+                15,
+                SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
+                3.0F,
+                0.1F,
+                ItemTags.REPAIRS_GOLD_ARMOR,
+                EquipmentModels.NETHERITE
+        );
+
+        REINFORCED_EMERALD
+        REINFORCED_AMETHYST
         String[] materials = {"EMERALD", "AMETHYST"};
         String[] armorTypes = {"HELMET", "CHESTPLATE", "LEGGINGS", "BOOTS"};
         String[] toolTypes = {"SWORD", "AXE", "PICKAXE", "SHOVEL", "HOE"};
