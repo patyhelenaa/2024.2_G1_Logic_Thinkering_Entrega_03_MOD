@@ -13,8 +13,10 @@ import java.util.EnumMap;
 public class LogicThinkeringArmorMaterial implements Material {
 
     private ArmorMaterial material;
+    private String name;
 
     public LogicThinkeringArmorMaterial(
+            String name,
             int durability,
             int[] defense,
             int enchantmentValue,
@@ -31,6 +33,7 @@ public class LogicThinkeringArmorMaterial implements Material {
         map.put(EquipmentType.HELMET, defense[3]);
         map.put(EquipmentType.BODY, defense[4]);
 
+        this.name = name;
         this.material = new ArmorMaterial(
                 durability,
                 map,
@@ -44,6 +47,11 @@ public class LogicThinkeringArmorMaterial implements Material {
 
     public ArmorMaterial getMaterial() {
         return material;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 
     @Override

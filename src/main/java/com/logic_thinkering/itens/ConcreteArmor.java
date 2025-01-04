@@ -8,10 +8,10 @@ public class ConcreteArmor extends PrototypeItem {
     private String id;
     private ArmorType type;
 
-    public ConcreteArmor(String id, String type, Material material) {
+    public ConcreteArmor(String id, ArmorType type, Material material) {
         if (material instanceof LogicThinkeringArmorMaterial materialArmadura) {
             strategy = new ConcreteRegisterArmor();
-            this.type = ArmorType.valueOf(type.toUpperCase());
+            this.type = type;
             this.material = materialArmadura;
             if(id != null) setId(id);
         }
@@ -19,7 +19,7 @@ public class ConcreteArmor extends PrototypeItem {
 
     @Override
     public ConcreteArmor clone() {
-        return new ConcreteArmor(null, this.type.name(), this.material);
+        return new ConcreteArmor(null, this.type, this.material);
     }
 
     @Override
