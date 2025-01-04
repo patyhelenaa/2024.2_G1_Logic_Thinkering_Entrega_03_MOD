@@ -119,5 +119,7 @@ public class MiningMachineBlockEntity extends BlockEntity implements ExtendedScr
 
     public void setMiningStrategy(MiningStrategy newStrategy, ServerWorld world, BlockPos pos) {
         this.miningStrategy = newStrategy;
+        this.blocksToMine.clear();
+        this.miningStrategy.mine(world, pos, this.blocksToMine);
     }
 }

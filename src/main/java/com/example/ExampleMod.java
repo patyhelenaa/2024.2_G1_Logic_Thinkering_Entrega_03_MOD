@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.network.NetworkRegistry;
 import com.example.screenhandler.ModScreenHandlers;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
@@ -16,6 +17,7 @@ public class ExampleMod implements ModInitializer {
 		Blocos.inicializa();
 		BlockEntities.inicializa();
 		ModScreenHandlers.inicializa();
+		NetworkRegistry.registerPackets();
 		new Item();
 		LOGGER.info("OK");
 	}
