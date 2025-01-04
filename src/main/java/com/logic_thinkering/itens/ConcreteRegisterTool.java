@@ -1,11 +1,14 @@
 package com.logic_thinkering.itens;
 
+import com.logic_thinkering.Main;
 import net.minecraft.item.*;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.BlockTags;
+import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 
 import java.util.function.Function;
@@ -18,9 +21,16 @@ public class ConcreteRegisterTool implements StrategyRegister {
     }
 
     @Override
-    public Item register(String id, String material, String type) {
+    public Item register(String id, Material material, String type) {
         Function<Item.Settings, Item> factory = (settings) -> {
-            ToolMaterial materialtool = ModToolMaterial.valueOf(material);
+            ToolMaterial materialtool = new ModToolMaterial(
+                    BlockTags.INCORRECT_FOR_STONE_TOOL,
+                    500,
+                    6.0F,
+                    3.0F,
+                    15,
+                    ItemTags.STONE_TOOL_MATERIALS
+            ).getMaterial();
 
             return switch (type) {
                 case "SWORD" -> new SwordItem(materialtool, 3, -1.9F, settings);
@@ -33,7 +43,7 @@ public class ConcreteRegisterTool implements StrategyRegister {
 
         };
 
-        RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(ExampleMod.MOD_ID, id));
+        RegistryKey<Item> key = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Main.MOD_ID, id));
         Item.Settings settings = new Item.Settings();
         Item item = factory.apply(settings.registryKey(key));
         Item result = Registry.register(Registries.ITEM, key, item);
