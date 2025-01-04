@@ -12,13 +12,15 @@ public class LogicThinkeringClient implements ClientModInitializer {
         CommandRegistrationCallback.EVENT.register((dispatcher, registryAccess, environment) -> {
             dispatcher.register(CommandManager.literal("logic_thinkering_book")
                     .executes(context -> {
-                        MinecraftClient.getInstance().setScreen(new CottonClientScreen(new ExampleGui()));
+                        MinecraftClient.getInstance().execute(() -> {
+                            MinecraftClient.getInstance().setScreen(new ExampleScreen(new ExampleGui()));
+                        });
                         return 1;
                     })
             );
         });
         //MinecraftClient.getInstance().setScreen(new CustomLibGuiScreen());
-        MinecraftClient.getInstance().setScreen(new CottonClientScreen(new ExampleGui()));
+        //MinecraftClient.getInstance().setScreen(new CottonClientScreen(new ExampleGui()));
 
     }
 }

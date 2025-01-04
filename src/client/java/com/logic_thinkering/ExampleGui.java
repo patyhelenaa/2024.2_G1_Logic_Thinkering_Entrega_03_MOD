@@ -10,7 +10,7 @@ public class ExampleGui extends LightweightGuiDescription {
     public ExampleGui() {
         WGridPanel root = new WGridPanel();
         setRootPanel(root);
-        root.setSize(256, 240);
+        root.setSize(600, 300);
         root.setInsets(Insets.ROOT_PANEL);
 
         WSprite icon = new WSprite(Identifier.ofVanilla("textures/item/redstone.png"));
