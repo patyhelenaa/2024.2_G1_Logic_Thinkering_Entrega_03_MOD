@@ -32,7 +32,7 @@ data class InputPower(
  * @param logicStrategy a strategy for the respective logic gate
  * indicating whether the gate should be powered
  */
-abstract class AbstractLogicGate(settings: Settings, private val logicStrategy: LogicStrategy) :
+abstract class AbstractLogicGate(settings: Settings, val logicStrategy: LogicStrategy) :
     AbstractRedstoneGateBlock(settings) {
     init {
         defaultState = stateManager.defaultState

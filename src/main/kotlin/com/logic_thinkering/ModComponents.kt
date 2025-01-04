@@ -1,6 +1,5 @@
 package com.logic_thinkering
 
-import com.logic_thinkering.LogicThinkeringKotlin.MOD_ID
 import com.mojang.serialization.Codec
 import net.minecraft.component.ComponentType
 import net.minecraft.registry.Registries
@@ -15,6 +14,6 @@ object ModComponents {
     )
 
     internal fun initialize() {
-        LogicThinkeringKotlin.logger.info("Registering {} components", MOD_ID)
+        logger.info("Registering {} components", MOD_ID)
     }
 }
