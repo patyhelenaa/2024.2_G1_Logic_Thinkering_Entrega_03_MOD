@@ -1,7 +1,6 @@
-package com.logic_thinkering;
+package com.logic_thinkering.itens;
 
 import com.logic_thinkering.Main;
-import com.logic_thinkering.StrategyRegister;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.equipment.EquipmentType;
@@ -23,7 +22,7 @@ public class ConcreteRegisterArmor implements StrategyRegister {
     @Override
     public Item register(String id, String material, String type) {
         Function<Item.Settings, Item> factory = (settings) -> new ArmorItem(
-                com.example.ModArmorMaterial.valueOf(material),
+                ModArmorMaterial.valueOf(material),
                 EquipmentType.valueOf(type),
                 settings);
 

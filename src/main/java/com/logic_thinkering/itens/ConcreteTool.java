@@ -1,4 +1,4 @@
-package com.logic_thinkering;
+package com.logic_thinkering.itens;
 
 import net.minecraft.item.Item;
 

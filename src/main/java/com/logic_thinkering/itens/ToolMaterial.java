@@ -1,4 +1,4 @@
-package com.logic_thinkering;
+package com.logic_thinkering.itens;
 
 import net.minecraft.registry.tag.BlockTags;
 import net.minecraft.registry.tag.ItemTags;

@@ -1,5 +1,6 @@
-package com.logic_thinkering;
+package com.logic_thinkering.itens;
 
+import com.logic_thinkering.Main;
 import net.minecraft.item.equipment.EquipmentModel;
 import net.minecraft.util.Identifier;
 

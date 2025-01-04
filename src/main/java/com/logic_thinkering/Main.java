@@ -1,5 +1,6 @@
 package com.logic_thinkering;
 
+import com.logic_thinkering.itens.LogicThinkeringItem;
 import net.fabricmc.api.ModInitializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

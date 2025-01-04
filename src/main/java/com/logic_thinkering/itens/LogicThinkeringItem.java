@@ -1,9 +1,4 @@
-package com.logic_thinkering;
-
-import com.logic_thinkering.itens.ConcreteArmor;
-import com.logic_thinkering.itens.ConcreteItem;
-import com.logic_thinkering.itens.ConcreteTool;
-import com.logic_thinkering.itens.PrototypeItem;
+package com.logic_thinkering.itens;
 
 import java.util.HashMap;
 import java.util.Map;

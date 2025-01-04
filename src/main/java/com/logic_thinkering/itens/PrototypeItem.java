@@ -1,4 +1,4 @@
-package com.logic_thinkering;
+package com.logic_thinkering.itens;
 
 public abstract class PrototypeItem {
     protected StrategyRegister strategy;
