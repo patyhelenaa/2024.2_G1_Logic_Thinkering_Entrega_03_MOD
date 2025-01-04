@@ -1,6 +1,5 @@
-package com.logic_thinkering.itens;
+package com.logic_thinkering;
 
-import com.logic_thinkering.Main;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.Item;

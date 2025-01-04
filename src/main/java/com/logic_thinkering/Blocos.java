@@ -2,7 +2,6 @@ package com.logic_thinkering;
 
 import com.logic_thinkering.block.AutoMiningBlock;
 import com.logic_thinkering.block.ClockEnergy;
-import com.logic_thinkering.itens.LogicThinkeringItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;

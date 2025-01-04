@@ -47,12 +47,29 @@ public class MaterialArmadura implements Material {
     }
 
     @Override
-    public void updateSettings(int i, int j, int k, int l) {
-        this.material = new ArmorMaterial()
+    public void updateSettings(int i, int j, float k, float l) {
+
+        this.material = new ArmorMaterial(
+                i,
+                material.defense(),
+                j,
+                material.equipSound(),
+                k,
+                l,
+                material.repairIngredient(),
+                material.modelId());
     }
 
     @Override
     public void updateItemTag(TagKey<Item> repairIngredient) {
-
+        this.material = new ArmorMaterial(
+                material.durability(),
+                material.defense(),
+                material.enchantmentValue(),
+                material.equipSound(),
+                material.toughness(),
+                material.knockbackResistance(),
+                repairIngredient,
+                material.modelId());
     }
 }
