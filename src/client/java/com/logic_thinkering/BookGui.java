@@ -1,49 +1,40 @@
 package com.logic_thinkering;
 
-import io.github.cottonmc.cotton.gui.client.BackgroundPainter;
 import io.github.cottonmc.cotton.gui.client.LightweightGuiDescription;
 import io.github.cottonmc.cotton.gui.widget.*;
-import io.github.cottonmc.cotton.gui.widget.data.Insets;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class BookGui extends LightweightGuiDescription {
 
     private final BookGuide book;
-
     private final WButton previousButton;
     private final WButton nextButton;
-
     private final List<WLabel> textLabels = new ArrayList<>();
-
     private final List<WSprite> icons = new ArrayList<>();
 
     public BookGui(BookGuide book) {
         this.book = book;
 
-
         // Painel principal
         WGridPanel root = new WGridPanel();
         setRootPanel(root);
-        root.setInsets(Insets.NONE);
         root.setSize(300, 300);
-        root.setInsets(Insets.ROOT_PANEL);
 
         WSprite background = new WSprite(Identifier.of("logic_thinkering", "textures/client/background.png"));
-        root.add(background, 0, 0, 16, 16);  //
+        root.add(background, 0, 0, 17, 17);
 
         // Título
         WLabel titleLabel = new WLabel(Text.literal(book.getCurrentPage().getTitle()));
         root.add(titleLabel, 1, 1);
 
-        // Texto
-        addPageText(root, book.getCurrentPage().getText(), 48, 3 );
+        // texto
+        addPageText(root, book.getCurrentPage().getText(), 48, 3);
 
-        // imagem
+        // Imagem
         updatePageImage(root, book.getCurrentPage().getImagePath());
 
         // Botão Anterior
@@ -53,7 +44,7 @@ public class BookGui extends LightweightGuiDescription {
             book.previousPage();
             updatePage(root, titleLabel);
         });
-        root.add(previousButton, 1, 14,4,1);
+        root.add(previousButton, 1, 14, 4, 1);
 
         // Botão Próximo
         nextButton = new WButton(Text.literal("Próximo"));
@@ -62,12 +53,11 @@ public class BookGui extends LightweightGuiDescription {
             book.nextPage();
             updatePage(root, titleLabel);
         });
-        root.add(nextButton, 8, 14,4,1);
+        root.add(nextButton, 12, 14, 4, 1);
 
         root.validate(this);
     }
 
-    /* Atualiza a imagem da página */
     private void updatePageImage(WGridPanel root, String imagePath) {
         // Remover a imagem anterior
         for (WSprite icon : icons) {
@@ -79,11 +69,10 @@ public class BookGui extends LightweightGuiDescription {
         if (imagePath != null && !imagePath.isEmpty()) {
             WSprite newIcon = new WSprite(Identifier.of("logic_thinkering", imagePath));
             icons.add(newIcon);
-            root.add(newIcon, 1, 9, 12, 3);
+            root.add(newIcon, 1, 9, 14, 3);
         }
     }
 
-    /* Quebrar o texto */
     private void addPageText(WGridPanel root, String text, int maxLineLength, int startY) {
         // Limpar os labels anteriores
         for (WLabel label : textLabels) {
@@ -101,7 +90,6 @@ public class BookGui extends LightweightGuiDescription {
         }
     }
 
-    // Quebra o texto em várias linhas
     private List<String> wrapText(String text, int maxLineLength) {
         List<String> lines = new ArrayList<>();
         StringBuilder currentLine = new StringBuilder();
@@ -127,14 +115,11 @@ public class BookGui extends LightweightGuiDescription {
         return lines;
     }
 
-    /* Atualiza a página */
     private void updatePage(WGridPanel root, WLabel titleLabel) {
         BookPage currentPage = book.getCurrentPage();
 
         titleLabel.setText(Text.literal(currentPage.getTitle()));
-
         addPageText(root, currentPage.getText(), 48, 3);
-
         updatePageImage(root, currentPage.getImagePath());
 
         previousButton.setEnabled(book.hasPreviousPage());

@@ -14,6 +14,10 @@ public class BookGuide {
         return pages.get(currentPageIndex);
     }
 
+    public List<BookPage> getPages() {
+        return pages;
+    }
+
     public boolean hasNextPage() {
         return currentPageIndex < pages.size() - 1;
     }
