@@ -14,7 +14,7 @@ private fun startup() {
     logger.info("Initializing Logic Thinkering mod, Kotlin side!")
 
     registerBlocks {
-        group(ItemGroups.REDSTONE)
+        group(LogicThinkeringItemGroup.LOGICTHINKERING_GROUP)
         settings(Settings.copy(Blocks.REPEATER))
         decorator {
             if (it is AbstractLogicGate)
