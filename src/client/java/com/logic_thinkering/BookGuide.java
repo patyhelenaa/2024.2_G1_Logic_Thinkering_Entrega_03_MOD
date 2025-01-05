@@ -2,38 +2,39 @@ package com.logic_thinkering;
 
 import java.util.List;
 
-public class BookGuide {
-    private final List<BookPage> pages;
+// Produto final
+class BookGuide {
+    private final List<BookPage> components;
     private int currentPageIndex = 0;
 
-    public BookGuide(List<BookPage> pages) {
-        this.pages = pages;
+    public BookGuide(List<BookPage> components) {
+        this.components = components;
     }
 
-    public BookPage getCurrentPage() {
-        return pages.get(currentPageIndex);
+    public BookComponent getCurrentComponent() {
+        return components.get(currentPageIndex);
     }
 
-    public List<BookPage> getPages() {
-        return pages;
+    public List<BookPage> getComponents() {
+        return components;
     }
 
-    public boolean hasNextPage() {
-        return currentPageIndex < pages.size() - 1;
+    public boolean hasNextComponent() {
+        return currentPageIndex < components.size() - 1;
     }
 
-    public boolean hasPreviousPage() {
+    public boolean hasPreviousComponent() {
         return currentPageIndex > 0;
     }
 
-    public void nextPage() {
-        if (hasNextPage()) {
+    public void nextComponent() {
+        if (hasNextComponent()) {
             currentPageIndex++;
         }
     }
 
-    public void previousPage() {
-        if (hasPreviousPage()) {
+    public void previousComponent() {
+        if (hasPreviousComponent()) {
             currentPageIndex--;
         }
     }

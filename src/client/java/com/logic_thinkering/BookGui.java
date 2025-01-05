@@ -28,29 +28,29 @@ public class BookGui extends LightweightGuiDescription {
         root.add(background, 0, 0, 17, 17);
 
         // Título
-        WLabel titleLabel = new WLabel(Text.literal(book.getCurrentPage().getTitle()));
+        WLabel titleLabel = new WLabel(Text.literal(book.getCurrentComponent().getTitle()));
         root.add(titleLabel, 1, 1);
 
         // texto
-        addPageText(root, book.getCurrentPage().getText(), 48, 3);
+        addPageText(root, book.getCurrentComponent().getText(), 48, 3);
 
         // Imagem
-        updatePageImage(root, book.getCurrentPage().getImagePath());
+        updatePageImage(root, book.getCurrentComponent().getImagePath());
 
         // Botão Anterior
         previousButton = new WButton(Text.literal("Anterior"));
-        previousButton.setEnabled(book.hasPreviousPage());
+        previousButton.setEnabled(book.hasPreviousComponent());
         previousButton.setOnClick(() -> {
-            book.previousPage();
+            book.previousComponent();
             updatePage(root, titleLabel);
         });
         root.add(previousButton, 1, 14, 4, 1);
 
         // Botão Próximo
         nextButton = new WButton(Text.literal("Próximo"));
-        nextButton.setEnabled(book.hasNextPage());
+        nextButton.setEnabled(book.hasNextComponent());
         nextButton.setOnClick(() -> {
-            book.nextPage();
+            book.nextComponent();
             updatePage(root, titleLabel);
         });
         root.add(nextButton, 12, 14, 4, 1);
@@ -116,13 +116,13 @@ public class BookGui extends LightweightGuiDescription {
     }
 
     private void updatePage(WGridPanel root, WLabel titleLabel) {
-        BookPage currentPage = book.getCurrentPage();
+        BookPage currentPage = (BookPage) book.getCurrentComponent();
 
         titleLabel.setText(Text.literal(currentPage.getTitle()));
         addPageText(root, currentPage.getText(), 48, 3);
         updatePageImage(root, currentPage.getImagePath());
 
-        previousButton.setEnabled(book.hasPreviousPage());
-        nextButton.setEnabled(book.hasNextPage());
+        previousButton.setEnabled(book.hasPreviousComponent());
+        nextButton.setEnabled(book.hasNextComponent());
     }
 }

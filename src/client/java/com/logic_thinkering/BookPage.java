@@ -1,6 +1,7 @@
 package com.logic_thinkering;
 
-public class BookPage {
+// Leaf
+class BookPage implements BookComponent {
     private final String title;
     private final String text;
     private final String imagePath;
@@ -11,14 +12,17 @@ public class BookPage {
         this.imagePath = imagePath == null ? "" : imagePath;
     }
 
+    @Override
     public String getTitle() {
         return title;
     }
 
+    @Override
     public String getText() {
         return text;
     }
 
+    @Override
     public String getImagePath() {
         return imagePath;
     }
