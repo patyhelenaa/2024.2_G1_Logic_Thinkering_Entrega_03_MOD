@@ -1,5 +1,6 @@
-package com.logic_thinkering;
+package com.logic_thinkering.itens;
 
+import com.logic_thinkering.Main;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
@@ -24,7 +25,7 @@ public class ConcreteRegisterItem implements StrategyRegister {
     }
 
     @Override
-    public Item register(String id, String material, String type) {
+    public Item register(String id, Material material, String type) {
         throw new UnsupportedOperationException("Register with material and type is not supported for generic items.");
     }
 
