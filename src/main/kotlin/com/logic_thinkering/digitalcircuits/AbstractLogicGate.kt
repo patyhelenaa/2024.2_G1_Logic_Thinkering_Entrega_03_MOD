@@ -2,12 +2,17 @@ package com.logic_thinkering.digitalcircuits
 
 import com.logic_thinkering.digitalcircuits.strategies.LogicStrategy
 import net.minecraft.block.AbstractRedstoneGateBlock
+import net.minecraft.block.AbstractRedstoneGateBlock.createCuboidShape
 import net.minecraft.block.Block
 import net.minecraft.block.BlockState
+import net.minecraft.block.ShapeContext
 import net.minecraft.state.StateManager
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
+import net.minecraft.util.shape.VoxelShape
+import net.minecraft.world.BlockView
 import net.minecraft.world.World
+
 
 /**
  * Data class representing the input power from neighbouring blocks.
@@ -23,6 +28,7 @@ data class InputPower(
     val south: Boolean,
 )
 
+private val BLOCK_SHAPE: VoxelShape = createCuboidShape(0.0, 0.0, 0.0, 16.0, 16.0, 16.0)
 /**
  * Abstract base class for logic digital gates that extends the behaviour of redstone gates in Minecraft.
  * this class takes a logic function that determines whether the gate is powered based on the input power from
@@ -39,6 +45,13 @@ abstract class AbstractLogicGate(settings: Settings, val logicStrategy: LogicStr
             .with(FACING, Direction.NORTH)
             .with(POWERED, false)
     }
+
+    override fun getOutlineShape(
+        state: BlockState?,
+        world: BlockView?,
+        pos: BlockPos?,
+        context: ShapeContext?
+    ) = BLOCK_SHAPE
 
     /**
      * Delay before the gate's state is updated. hardcoded to two ticks.
