@@ -8,7 +8,7 @@ public class BookPage {
     public BookPage(String title, String text, String imagePath) {
         this.title = title;
         this.text = text;
-        this.imagePath = imagePath;
+        this.imagePath = imagePath == null ? "" : imagePath;
     }
 
     public String getTitle() {

@@ -30,18 +30,18 @@ public class BookGui extends LightweightGuiDescription {
         WGridPanel root = new WGridPanel();
         setRootPanel(root);
         root.setInsets(Insets.NONE);
-        root.setSize(250, 250);
+        root.setSize(300, 300);
         root.setInsets(Insets.ROOT_PANEL);
 
         WSprite background = new WSprite(Identifier.of("logic_thinkering", "textures/client/background.png"));
-        root.add(background, 0, 0, 14, 13);  //
+        root.add(background, 0, 0, 16, 16);  //
 
         // Título
         WLabel titleLabel = new WLabel(Text.literal(book.getCurrentPage().getTitle()));
         root.add(titleLabel, 1, 1);
 
         // Texto
-        addPageText(root, book.getCurrentPage().getText(), 40, 2 );
+        addPageText(root, book.getCurrentPage().getText(), 48, 3 );
 
         // imagem
         updatePageImage(root, book.getCurrentPage().getImagePath());
@@ -53,7 +53,7 @@ public class BookGui extends LightweightGuiDescription {
             book.previousPage();
             updatePage(root, titleLabel);
         });
-        root.add(previousButton, 1, 11,4,1);
+        root.add(previousButton, 1, 14,4,1);
 
         // Botão Próximo
         nextButton = new WButton(Text.literal("Próximo"));
@@ -62,23 +62,25 @@ public class BookGui extends LightweightGuiDescription {
             book.nextPage();
             updatePage(root, titleLabel);
         });
-        root.add(nextButton, 8, 11,4,1);
+        root.add(nextButton, 8, 14,4,1);
 
         root.validate(this);
     }
 
     /* Atualiza a imagem da página */
     private void updatePageImage(WGridPanel root, String imagePath) {
-        // Remover a anterior
+        // Remover a imagem anterior
         for (WSprite icon : icons) {
             root.remove(icon);
         }
         icons.clear();
 
-        // Adicionar a nova
-        WSprite newIcon = new WSprite(Identifier.of("logic_thinkering", imagePath));
-        icons.add(newIcon);
-        root.add(newIcon, 1, 3,12, 6);
+        // Nova imagem
+        if (imagePath != null && !imagePath.isEmpty()) {
+            WSprite newIcon = new WSprite(Identifier.of("logic_thinkering", imagePath));
+            icons.add(newIcon);
+            root.add(newIcon, 1, 9, 12, 3);
+        }
     }
 
     /* Quebrar o texto */
@@ -105,6 +107,12 @@ public class BookGui extends LightweightGuiDescription {
         StringBuilder currentLine = new StringBuilder();
 
         for (String word : text.split(" ")) {
+            if (word.equals("\n")) {
+                lines.add(currentLine.toString().trim());
+                currentLine = new StringBuilder();
+                continue;
+            }
+
             if (currentLine.length() + word.length() > maxLineLength) {
                 lines.add(currentLine.toString().trim());
                 currentLine = new StringBuilder();
@@ -125,7 +133,7 @@ public class BookGui extends LightweightGuiDescription {
 
         titleLabel.setText(Text.literal(currentPage.getTitle()));
 
-        addPageText(root, currentPage.getText(), 40, 2);
+        addPageText(root, currentPage.getText(), 48, 3);
 
         updatePageImage(root, currentPage.getImagePath());
 
