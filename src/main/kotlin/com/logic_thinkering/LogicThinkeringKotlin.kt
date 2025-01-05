@@ -18,7 +18,7 @@ private fun startup() {
         settings(Settings.copy(Blocks.REPEATER))
         decorator {
             if (it is AbstractLogicGate)
-                LogGateDecorator(it)
+                LogicLoggerDecorator(it)
             else {
                 it
             }
