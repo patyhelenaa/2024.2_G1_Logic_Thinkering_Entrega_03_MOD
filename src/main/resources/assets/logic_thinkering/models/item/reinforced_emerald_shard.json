@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "logic_thinkering:item/reinforced_emerald_shard"
+    "layer0": "logic-thinkering:item/reinforced_emerald_shard"
   }
 }

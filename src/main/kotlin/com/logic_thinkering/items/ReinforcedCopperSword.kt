@@ -1,7 +1,6 @@
 package com.logic_thinkering.items
 
 import com.logic_thinkering.LogicThinkeringKotlin
-import com.logic_thinkering.MOD_ID
 import com.logic_thinkering.ModComponents
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.player.PlayerEntity
@@ -33,7 +32,7 @@ class ReinforcedCopperSword(
     settings: Settings = Settings().registryKey(
         RegistryKey.of(
             RegistryKeys.ITEM,
-            Identifier.of(MOD_ID, name)
+            Identifier.of(LogicThinkeringKotlin.MOD_ID, name)
         )
     )
 ) : SwordItem(material, 4.0F, 5.0F, settings) {
