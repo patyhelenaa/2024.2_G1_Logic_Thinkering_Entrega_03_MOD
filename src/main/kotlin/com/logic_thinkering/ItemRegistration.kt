@@ -1,6 +1,5 @@
 package com.logic_thinkering
 
-import com.logic_thinkering.LogicThinkeringKotlin.MOD_ID
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
 import net.minecraft.item.Item
 import net.minecraft.item.ItemGroup

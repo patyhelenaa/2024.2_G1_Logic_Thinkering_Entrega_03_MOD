@@ -1,6 +1,7 @@
 package com.logic_thinkering.items
 
 import com.logic_thinkering.LogicThinkeringKotlin
+import com.logic_thinkering.MOD_ID
 import com.logic_thinkering.ModComponents
 import net.minecraft.entity.player.PlayerEntity
 import net.minecraft.item.ItemStack
@@ -18,7 +19,7 @@ class ReinforcedCopperShield(name: String = "reinforced_copper_shield"): ShieldI
     Settings().maxDamage(336).registryKey(
         RegistryKey.of(
             RegistryKeys.ITEM,
-            Identifier.of(LogicThinkeringKotlin.MOD_ID, name)
+            Identifier.of(MOD_ID, name)
         )
     )
 ) {

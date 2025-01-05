@@ -1,6 +1,5 @@
 package com.logic_thinkering
 
-import com.logic_thinkering.LogicThinkeringKotlin.MOD_ID
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents
 import net.minecraft.block.AbstractBlock.Settings
 import net.minecraft.block.Block
@@ -31,6 +30,7 @@ fun registerBlocks(init: BlockRegistryBuilder.() -> Unit) {
  * @return A newly created `Block` instance.
  */
 typealias BlockInit = (Settings) -> Block
+typealias Decorator = (Block) -> Block
 
 @DslMarker
 annotation class BlockRegistryDsl
@@ -45,6 +45,15 @@ class BlockRegistryBuilder {
     private var itemGroup: RegistryKey<ItemGroup>? = null
     private var baseSettings: Settings? = null
     private var registerItems = true
+    private var decorator: Decorator? = null
+
+    /**
+     * Sets a decorator for the blocks being registered
+     *
+     * @param decorator the decorator to be applied to the blocks
+     * @return The current instance of 'BlockRegistryBuilder'
+     */
+    fun decorator(decorator: Decorator) = apply { this.decorator = decorator }
 
     /**
      * Sets the settings for the blocks being registered.
@@ -90,6 +99,24 @@ class BlockRegistryBuilder {
      */
     fun with(init: BlockInit, name: String) = apply { blocks += init to name }
 
+    private fun registerBlock(init: BlockInit, name: String, registerItem: Boolean) : Pair<Block, String> {
+        val id = Identifier.of(MOD_ID, name)
+        val key = RegistryKey.of(RegistryKeys.BLOCK, id)
+        val settings = baseSettings!!.registryKey(key)
+        val block = init(settings)
+        Registry.register(Registries.BLOCK, id, block).also {
+            if (registerItem) {
+                val itemKey = RegistryKey.of(RegistryKeys.ITEM, id)
+                val itemSettings = Item.Settings().registryKey(itemKey)
+                Registry.register(Registries.ITEM, id, BlockItem(it, itemSettings))
+                LogicThinkeringItemGroup.addItem(Registry.register(Registries.ITEM, id, BlockItem(it, itemSettings)))
+                ItemGroupEvents.modifyEntriesEvent(itemGroup).register {it.add(block)}
+            }
+        }
+
+        return block to name
+    }
+
     /**
      * Registers all blocks in the registry, using the provided settings and item group.
      * This method also ensures that the all the items will be registered for each block
@@ -103,26 +130,12 @@ class BlockRegistryBuilder {
         if (baseSettings == null)
             throw IllegalStateException("Settings must be set before block registration")
 
-        val constructedBlocks = blocks.map { (blockInit, name) ->
-            val id = Identifier.of(MOD_ID, name)
-            val key = RegistryKey.of(RegistryKeys.BLOCK, id)
-            val settings = baseSettings!!.registryKey(key)
-            blockInit(settings) to name
-        }
-
-        val registeredBlocks = constructedBlocks.map { (block, name) ->
-            val id = Identifier.of(MOD_ID, name)
-            Registry.register(Registries.BLOCK, id, block).also {
-                if (registerItems) {
-                    val itemKey = RegistryKey.of(RegistryKeys.ITEM, id)
-                    val itemSettings = Item.Settings().registryKey(itemKey)
-                    LogicThinkeringItemGroup.addItem(Registry.register(Registries.ITEM, id, BlockItem(it, itemSettings)))
-                }
-            }
-        }
-
-        ItemGroupEvents.modifyEntriesEvent(itemGroup).register { content ->
-            registeredBlocks.forEach { block -> content.add(block) }
+        if (decorator == null) {
+            blocks.forEach {(init, name) -> registerBlock(init, name, true)}
+        } else {
+            blocks
+                .map { (init, name) -> registerBlock(init, name, false)}
+                .forEach { (block, name) -> registerBlock({ decorator!!(block)}, name+"_decorated", true ) }
         }
     }
 }
