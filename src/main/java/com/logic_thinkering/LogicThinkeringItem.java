@@ -20,8 +20,8 @@ public class LogicThinkeringItem {
     public LogicThinkeringItem() {
 
         items.add(new ConcreteItem("reinforced_copper_ingot"));
-        insertItemCommon("reinforced_emerald_shard");
-        insertItemCommon("reinforced_amethyst_shard");
+        insertCommonItem("reinforced_emerald_shard");
+        insertCommonItem("reinforced_amethyst_shard");
 
         armorMaterials.add(new LogicThinkeringArmorMaterial("REINFORCED_COPPER", 37, new int[]{3, 6, 8, 3, 11}, 15, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 3.0F, 0.1F, ItemTags.REPAIRS_GOLD_ARMOR, EquipmentModels.NETHERITE));
         armorMaterials.add(new LogicThinkeringArmorMaterial("REINFORCED_EMERALD", 37, new int[]{3, 6, 8, 3, 11}, 15, SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, 3.0F, 0.1F, ItemTags.REPAIRS_GOLD_ARMOR, EquipmentModels.NETHERITE));
@@ -35,7 +35,7 @@ public class LogicThinkeringItem {
         insertAllTools();
     }
 
-    private void insertItemCommon(String id){
+    private void insertCommonItem(String id){
         ConcreteItem clone = items.getFirst().clone();
         clone.register(id);
         items.add(clone);
