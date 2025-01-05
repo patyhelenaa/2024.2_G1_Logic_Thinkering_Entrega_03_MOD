@@ -23,13 +23,13 @@ private fun startup() {
                 it
             }
         }
-        ::ORGate with "or_gate_block"
-        ::ANDGate with "and_gate_block"
-        ::XORGate with "xor_gate_block"
-        ::NOTGate with "not_gate_block"
-        ::NORGate with "nor_gate_block"
-        ::NANDGate with "nand_gate_block"
-        ::XNORGate with "xnor_gate_block"
+        ::ORGate with "or_gate"
+        ::ANDGate with "and_gate"
+        ::XORGate with "xor_gate"
+        ::NOTGate with "not_gate"
+        ::NORGate with "nor_gate"
+        ::NANDGate with "nand_gate"
+        ::XNORGate with "xnor_gate"
     }
 
     registerItems {
