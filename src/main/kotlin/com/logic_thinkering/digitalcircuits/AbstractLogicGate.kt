@@ -74,7 +74,7 @@ abstract class AbstractLogicGate(settings: Settings, val logicStrategy: LogicStr
      * @param state The current state of the block.
      * @return An `InputPower` object containing the power status from the east, west, and south neighbors.
      */
-    private fun getInputPower(world: World, pos: BlockPos, state: BlockState) : InputPower{
+    protected fun getInputPower(world: World, pos: BlockPos, state: BlockState) : InputPower{
         val facing = state[FACING]
          return InputPower(
              hasPowerFromNeighbor(world, pos, facing.rotateYClockwise()),
